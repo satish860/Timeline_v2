@@ -1,6 +1,11 @@
-
-import { Calendar, Search, Settings, IndianRupee, HelpCircle, GalleryVerticalEnd, ChevronsUpDown } from "lucide-react";
-import { Label } from "@/components/ui/label";
+import {
+  Calendar,
+  Settings,
+  IndianRupee,
+  HelpCircle,
+  GalleryVerticalEnd,
+  ChevronsUpDown,
+} from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,12 +17,10 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarHeader,
-  SidebarInput,
   SidebarRail,
 } from "@/components/ui/sidebar";
 
@@ -61,8 +64,7 @@ export function AppSidebar() {
                 <DropdownMenuContent
                   className="w-[--radix-dropdown-menu-trigger-width]"
                   align="start"
-                >
-                </DropdownMenuContent>
+                ></DropdownMenuContent>
               </DropdownMenu>
             </SidebarMenuItem>
           </SidebarMenu>
@@ -71,7 +73,6 @@ export function AppSidebar() {
         <SidebarContent>
           {data.navMain.map((item) => (
             <SidebarGroup key={item.title}>
-              
               <SidebarGroupContent>
                 <SidebarMenu>
                   {item.items.map((item) => (
@@ -91,7 +92,6 @@ export function AppSidebar() {
         </SidebarContent>
         <SidebarRail />
       </Sidebar>
-     
     </>
   );
 }

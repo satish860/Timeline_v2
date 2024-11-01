@@ -6,7 +6,7 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { cookies } from "next/headers";
 import { Separator } from "@/components/ui/separator";
-import { Settings, User } from "lucide-react";
+import { Settings } from "lucide-react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
