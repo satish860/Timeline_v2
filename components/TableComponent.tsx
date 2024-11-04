@@ -20,7 +20,6 @@ const TimelineTable: React.FC<TableComponentProps> = ({ data, pdfUrl }) => {
     const handleShowPdf = (
       event: CustomEvent<{ url: string; page: number }>
     ) => {
-      console.log("showPdf", event);
       setShowPdf(true);
       setInitialPage(event.detail.page);
     };
@@ -28,7 +27,7 @@ const TimelineTable: React.FC<TableComponentProps> = ({ data, pdfUrl }) => {
     return () => {
       window.removeEventListener("showPdf", handleShowPdf as EventListener);
     };
-  }, []);``
+  }, []);
 
   return (
     <div className="flex gap-6 h-[calc(90vh-4rem)]">
