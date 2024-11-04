@@ -37,7 +37,7 @@ export const PdfViewer: React.FC<PDFProps> = ({ pdfUrl, initialPage = 1 }) => {
   }
 
   return (
-    <div className="h-[calc(100vh-100px)] overflow-auto custom-scrollbar">
+    <div className="h-[calc(80vh-10px)] overflow-auto custom-scrollbar">
       <Toolbar />
       <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.js">
         <Viewer
