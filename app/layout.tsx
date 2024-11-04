@@ -12,6 +12,7 @@ import { Settings } from "lucide-react";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import "@react-pdf-viewer/search/lib/styles/index.css";
+import { EdgeStoreProvider } from "../lib/edgestore";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -92,7 +93,9 @@ export default async function RootLayout({
                     </button>
                   </div>
                 </header>
-                <main className="p-6">{children}</main>
+                <EdgeStoreProvider>
+                  <main className="p-6">{children}</main>
+                </EdgeStoreProvider>
               </SidebarInset>
             </SidebarProvider>
           </StackTheme>
