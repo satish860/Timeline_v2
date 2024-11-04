@@ -116,26 +116,29 @@ const Page: React.FC = () => {
         <div className="flex items-center justify-center min-h-80">
             <Card className="w-full max-w-3xl mx-auto">
                 <CardHeader>
-                    <div className="flex items-center justify-between mb-6 relative">
+                    <div className="flex items-center justify-between mb-6">
                         <div className="flex items-center gap-1 z-10">
-                            <div className={`flex items-center justify-center w-8 h-8 rounded-full ${currentStep >= 1 ? 'bg-gray-200 text-black' : 'bg-gray-100 text-gray-400'} font-bold`}>
+                            <div className={`flex items-center justify-center w-8 h-8 rounded-full ${currentStep >= 1 ? 'bg-primary text-primary-foreground' : 'bg-background text-muted-foreground border'} font-medium shadow-sm`}>
                                 1
                             </div>
-                            <span className={currentStep >= 1 ? 'font-bold text-black' : 'text-gray-400'}>Timeline Details</span>
+                            <span className={currentStep >= 1 ? 'font-medium text-foreground pr-4' : 'text-muted-foreground pr-4'}>Timeline Details</span>
+                            <div className="h-[2px] bg-border w-[100px]"></div>
                         </div>
+
                         <div className="flex items-center gap-1 z-10">
-                            <div className={`flex items-center justify-center w-8 h-8 rounded-full ${currentStep >= 2 ? 'bg-gray-200 text-black' : 'bg-gray-100 text-gray-400'} font-bold`}>
+                            <div className={`flex items-center justify-center w-8 h-8 rounded-full ${currentStep >= 2 ? 'bg-primary text-primary-foreground' : 'bg-background text-muted-foreground border'} font-medium shadow-sm`}>
                                 2
                             </div>
-                            <span className={currentStep >= 2 ? 'font-bold text-black' : 'text-gray-400'}>Upload Files</span>
+                            <span className={currentStep >= 2 ? 'font-medium text-foreground pr-4' : 'text-muted-foreground pr-4'}>Upload Files</span>
+                            <div className="h-[2px] bg-border w-[100px]"></div>
                         </div>
+
                         <div className="flex items-center gap-1 z-10">
-                            <div className={`flex items-center justify-center w-8 h-8 rounded-full ${currentStep >= 3 ? 'bg-gray-200 text-black' : 'bg-gray-100 text-gray-400'} font-bold`}>
+                            <div className={`flex items-center justify-center w-8 h-8 rounded-full ${currentStep >= 3 ? 'bg-primary text-primary-foreground' : 'bg-background text-muted-foreground border'} font-medium shadow-sm`}>
                                 3
                             </div>
-                            <span className={currentStep >= 3 ? 'font-bold text-black' : 'text-gray-400'}>Review & Submit</span>
+                            <span className={currentStep >= 3 ? 'font-medium text-foreground' : 'text-muted-foreground'}>Review & Submit</span>
                         </div>
-                        <div className="absolute top-1/2 left-0 w-full h-px bg-gray-200 -translate-y-1/2"></div>
                     </div>
                 </CardHeader>
                 
