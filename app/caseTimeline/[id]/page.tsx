@@ -1,17 +1,29 @@
-import { DataTable } from "@/components/Table/data-table";
-import { columns } from "@/components/TimelineTable/columns";
+import TimelineTable from "@/components/TableComponent";
+import { getXataClient } from "@/src/xata";
 import axios from "axios";
 
+const xata = getXataClient();
+
 async function getCaseTimeline(id: string) {
-  console.log("id", id);
-  const response = await axios.get(
-    "https://pub-cc8438e664ef4d32a54c800c7c408282.r2.dev/69f37be3-5a84-41f3-8ec8-bcca35d54fc5.json"
-  );
-  return response.data.events;
+  try {
+    const record = await xata.db.timeline_files_data.read(id);
+
+    if (!record || typeof record.Timeline_url !== "string") {
+      throw new Error("Invalid record, Timeline URL, or workspace");
+    }
+    const response = await axios.get(record.Timeline_url);
+    return {
+      pdfUrl: record.file_url,
+      events: response.data.events,
+    };
+  } catch (error) {
+    console.error("Error fetching timeline:", error);
+    throw error;
+  }
 }
 
 export default async function Timeline({ params }: { params: { id: string } }) {
-  const data = await getCaseTimeline(params.id);
+  const { events, pdfUrl } = await getCaseTimeline(params.id);
 
-  return <DataTable columns={columns} data={data} />;
+  return <TimelineTable data={events} pdfUrl={pdfUrl!} />;
 }

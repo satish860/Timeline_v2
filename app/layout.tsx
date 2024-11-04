@@ -9,6 +9,9 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 import { cookies } from "next/headers";
 import { Separator } from "@/components/ui/separator";
 import { Settings } from "lucide-react";
+import "@react-pdf-viewer/core/lib/styles/index.css";
+import "@react-pdf-viewer/default-layout/lib/styles/index.css";
+import "@react-pdf-viewer/search/lib/styles/index.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,31 +39,35 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}><StackProvider app={stackServerApp}><StackTheme>
-        <SidebarProvider defaultOpen={defaultOpen}>
-          <AppSidebar />
-          <SidebarInset>
-            <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-              <div className="flex items-center">
-                <SidebarTrigger className="-ml-1" />
-                <Separator orientation="vertical" className="mx-2 h-4" />
-              </div>
-              <div className="flex items-center gap-4 ml-auto">
-                <span className="text-sm text-gray-600">
-                  Page credits remaining: 77,057
-                </span>
-                <button className="flex items-center gap-2 px-3 py-1.5 text-sm border rounded-md hover:bg-gray-50">
-                  <span>Purchase Credits</span>
-                </button>
-                <button className="p-2 hover:bg-gray-100 rounded-full">
-                  <Settings className="h-5 w-5" />
-                </button>
-              </div>
-            </header>
-            <main className="p-6">{children}</main>
-          </SidebarInset>
-        </SidebarProvider>
-      </StackTheme></StackProvider></body>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <StackProvider app={stackServerApp}>
+          <StackTheme>
+            <SidebarProvider defaultOpen={defaultOpen}>
+              <AppSidebar />
+              <SidebarInset>
+                <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+                  <div className="flex items-center">
+                    <SidebarTrigger className="-ml-1" />
+                    <Separator orientation="vertical" className="mx-2 h-4" />
+                  </div>
+                  <div className="flex items-center gap-4 ml-auto">
+                    <span className="text-sm text-gray-600">
+                      Page credits remaining: 77,057
+                    </span>
+                    <button className="flex items-center gap-2 px-3 py-1.5 text-sm border rounded-md hover:bg-gray-50">
+                      <span>Purchase Credits</span>
+                    </button>
+                    <button className="p-2 hover:bg-gray-100 rounded-full">
+                      <Settings className="h-5 w-5" />
+                    </button>
+                  </div>
+                </header>
+                <main className="p-6">{children}</main>
+              </SidebarInset>
+            </SidebarProvider>
+          </StackTheme>
+        </StackProvider>
+      </body>
     </html>
   );
 }

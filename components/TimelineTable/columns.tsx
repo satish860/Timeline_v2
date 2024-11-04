@@ -1,8 +1,10 @@
 "use client";
+import React from "react";
 import { ColumnDef } from "@tanstack/react-table";
 import { z } from "zod";
 import { DataTableColumnHeader } from "@/components/Table/data-table-column-header";
 import { Checkbox } from "../ui/checkbox";
+import { Button } from "../ui/button";
 
 export const TimelineEventSchema = z.object({
   original_dates: z.array(z.string()),
@@ -48,7 +50,6 @@ export const columns: ColumnDef<TimelineEvent>[] = [
   },
   {
     accessorKey: "original_dates",
-    // header: "Date",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Date" />
     ),
@@ -69,7 +70,30 @@ export const columns: ColumnDef<TimelineEvent>[] = [
       return sources.map((source, idx) => (
         <div key={idx} className="text-sm text-muted-foreground">
           <div>{source.file_name}</div>
-          <div className="text-xs">Page. {source.page_numbers.join(", ")}</div>
+          <div className="text-xs">
+            Page.{" "}
+            {source.page_numbers.map((pageNum, pageIdx) => (
+              <React.Fragment key={pageIdx}>
+                <Button
+                  variant="link"
+                  className="p-0 h-auto text-xs"
+                  onClick={() => {
+                    window.dispatchEvent(
+                      new CustomEvent("showPdf", {
+                        detail: {
+                          url: source.file_name,
+                          page: pageNum,
+                        },
+                      })
+                    );
+                  }}
+                >
+                  {pageNum}
+                </Button>
+                {pageIdx < source.page_numbers.length - 1 ? ", " : ""}
+              </React.Fragment>
+            ))}
+          </div>
         </div>
       ));
     },
