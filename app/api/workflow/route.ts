@@ -21,9 +21,12 @@ export const { POST } = serve<InitialPayload>(async (context) => {
   const segment_url = process.env.SEGMENT_URL || "";
   const combine_url = process.env.COMBINE_URL || "";
 
+  const record_id = payload.id;
+  const workspace_id = payload.workspace_id;
+
   const postData = {
-    record_id: payload.id,
-    workspace_id: payload.workspace_id,
+    record_id: record_id,
+    workspace_id: workspace_id,
   };
 
   const client = await auth.getIdTokenClient(extract_url);
@@ -38,10 +41,10 @@ export const { POST } = serve<InitialPayload>(async (context) => {
     },
   });
 
-  console.log("initial step is done");
-  console.log(response.body);
-
-  if (!response) {
+  if (response.status === 200) {
+    console.log("Initial step is done");
+  } else {
+    console.log("Extraction step failed");
     return;
   }
 
@@ -59,29 +62,42 @@ export const { POST } = serve<InitialPayload>(async (context) => {
     },
   });
 
-  console.log("Segmentation step is done");
-  console.log(segmentResponse.body);
+  if (segmentResponse.status === 200) {
+    console.log("Segmentation step is done");
+  } else {
+    console.log("Segmentation step failed");
+    return;
+  }
 
   const records = await xata.db.timeline_files_data
-    .select(["file_url", "file_name", "Timeline_url"])
+    .select(["file_url", "file_name", "Timeline_url", "Status"])
     .filter({ workspace: { id: payload.workspace_id } })
     .getAll();
 
-  if (records.length === 1 && records[0].Timeline_url) {
+  if (
+    records.length === 1 &&
+    records[0].Timeline_url &&
+    records[0].Status === "Timeline Created"
+  ) {
     console.log("Single record case");
-    const UpdateTimeline = await xata.db.timeline_Job_Queue.update(
+    await xata.db.timeline_Job_Queue.update(
       payload.workspace_id,
       {
         Timeline_url: records[0].Timeline_url,
+        Status: "Completed",
       }
     );
-    console.log(UpdateTimeline);
+    console.log("Timeline URL updated");
   } else if (
     records.length > 1 &&
-    records.every((record) => record.Timeline_url)
+    records.every(
+      (record) => record.Timeline_url && record.Status === "Timeline Created"
+    )
   ) {
     console.log("Length of records: ", records.length);
-    console.log("Multiple records with Timeline_url present");
+    console.log(
+      "Multiple records with Timeline_url present and Timeline Created status"
+    );
 
     const combineClient = await auth.getIdTokenClient(combine_url);
     const combineToken = await combineClient.idTokenProvider.fetchIdToken(
@@ -98,6 +114,6 @@ export const { POST } = serve<InitialPayload>(async (context) => {
     });
     console.log(combineResponse.body);
   } else {
-    console.log("No records with Timeline_url present");
+    console.log("Unable to find Timeline URL");
   }
 });
