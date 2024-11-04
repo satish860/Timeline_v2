@@ -162,6 +162,7 @@ const tables = [
       { name: "poster_url", type: "text" },
     ],
   },
+  { name: "timeline_delete", columns: [{ name: "CaseName", type: "text" }] },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -209,6 +210,9 @@ export type TimelineJobQueueRecord = TimelineJobQueue & XataRecord;
 export type PodcastSamples = InferredTypes["podcast_samples"];
 export type PodcastSamplesRecord = PodcastSamples & XataRecord;
 
+export type TimelineDelete = InferredTypes["timeline_delete"];
+export type TimelineDeleteRecord = TimelineDelete & XataRecord;
+
 export type DatabaseSchema = {
   workspace: WorkspaceRecord;
   fileData: FileDataRecord;
@@ -224,6 +228,7 @@ export type DatabaseSchema = {
   timeline_file_split_data: TimelineFileSplitDataRecord;
   timeline_Job_Queue: TimelineJobQueueRecord;
   podcast_samples: PodcastSamplesRecord;
+  timeline_delete: TimelineDeleteRecord;
 };
 
 const DatabaseClient = buildClient();
