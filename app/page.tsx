@@ -6,6 +6,8 @@ import { useUser } from "@stackframe/stack";
 
 export default function Home() {
   const user = useUser({ or: "redirect" });
+  console.log(user.id);
+
   const data: Case[] = [
     {
       id: "1",
