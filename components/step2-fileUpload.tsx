@@ -209,9 +209,11 @@ const FileUpload: React.FC<StepProps> = ({ onNext, onBack }) => {
                                     key={index}
                                     className="flex items-center justify-between bg-gray-50 p-3 rounded-md"
                                 >
-                                    <div className="flex items-center space-x-2 flex-1">
+                                    <div className="flex items-center space-x-2 min-w-0 flex-1 mr-1">
                                         <FileText className="w-4 h-4 text-gray-400" />
-                                        <span className="text-sm truncate">{file.name}</span>
+                                        <span className="text-sm truncate max-w-[150px]" title={file.name}>
+                                            {file.name}
+                                        </span>
                                     </div>
                                     <div className="flex items-center space-x-2">
                                         {fileProgress[file.name]?.status === "uploaded" ? (
@@ -242,13 +244,14 @@ const FileUpload: React.FC<StepProps> = ({ onNext, onBack }) => {
                     )}
                 </div>
             </div>
-            <div className="flex p-4 justify-end space-x-4">
-                <Button variant="outline" onClick={onBack}>
+            <div className="flex justify-end space-x-1">
+                <Button variant="outline" onClick={onBack} className="px-20 py-3">
                     Back
                 </Button>
                 <Button
                     onClick={onNext}
                     disabled={files.length === 0}
+                    className="px-20 py-3"
                 >
                     {isLoading ? (
                         <>
