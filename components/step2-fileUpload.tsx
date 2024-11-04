@@ -15,7 +15,7 @@ import { Progress } from './ui/progress';
 import axios from 'axios';
 
 interface StepProps {
-    onNext: () => void;
+    onNext: (files: File[], fileIds: string[], fileUrls: string[]) => void;
     onBack?: () => void;
 }
 
@@ -249,7 +249,7 @@ const FileUpload: React.FC<StepProps> = ({ onNext, onBack }) => {
                     Back
                 </Button>
                 <Button
-                    onClick={onNext}
+                    onClick={() => onNext(files, fileIds, files.map(f => fileProgress[f.name]?.fileUrl || ''))}
                     disabled={files.length === 0}
                     className="px-20 py-3"
                 >

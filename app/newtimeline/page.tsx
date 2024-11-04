@@ -14,6 +14,12 @@ interface TimelineFormData {
     recId?: string;
 }
 
+interface FileData {
+    file: File;
+    fileId: string;
+    fileUrl: string;
+}
+
 const Page: React.FC = () => {
     const [currentStep, setCurrentStep] = useState(1);
     const [timelineData, setTimelineData] = useState<TimelineFormData>({
@@ -21,6 +27,7 @@ const Page: React.FC = () => {
         areaOfLaw: '',
         recId: undefined
     });
+    const [uploadedFiles, setUploadedFiles] = useState<FileData[]>([]);
 
     const handleNext = () => {
         setCurrentStep(prev => Math.min(prev + 1, 3));
@@ -51,6 +58,16 @@ const Page: React.FC = () => {
             console.error('Error creating case:', error);
             throw error;
         }
+    };
+
+    const handleFileUploadNext = (files: File[], fileIds: string[], fileUrls: string[]) => {
+        const filesData: FileData[] = files.map((file, index) => ({
+            file,
+            fileId: fileIds[index],
+            fileUrl: fileUrls[index]
+        }));
+        setUploadedFiles(filesData);
+        setCurrentStep(currentStep + 1);
     };
 
     return (
@@ -92,10 +109,18 @@ const Page: React.FC = () => {
                     />
                 )}
                 {currentStep === 2 && (
-                    <FileUpload onNext={handleNext} onBack={handleBack} />
+                    <FileUpload 
+                        onNext={handleFileUploadNext}
+                        onBack={() => setCurrentStep(currentStep - 1)}
+                    />
                 )}
                 {currentStep === 3 && (
-                    <Review onBack={handleBack} />
+                    <Review 
+                        onNext={handleNext}
+                        onBack={() => setCurrentStep(currentStep - 1)}
+                        timelineData={timelineData}
+                        uploadedFiles={uploadedFiles}
+                    />
                 )}
             </Card>
         </div>
