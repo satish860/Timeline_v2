@@ -6,7 +6,6 @@ import { useUser } from "@stackframe/stack"
 
 export default function Home() {
   const user = useUser({ or: "redirect" });
-  console.log("emai", user.primaryEmail);
   const data: Case[] = [
     { id: "1", caseTitle: "Case 1", status: "in progress", priority: "medium", label: "Case 1", shareList: ["Satish", "Rajesh"] },
     { id: "2", caseTitle: "Case 2", status: "in progress", priority: "medium", label: "Case 2", shareList: ["Satish", "Rajesh"] },
@@ -17,7 +16,7 @@ export default function Home() {
     <div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
         <div className="flex items-center justify-between space-y-2">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight">Welcome Satish !</h2>
+            <h2 className="text-2xl font-bold tracking-tight">Welcome {user.displayName} !</h2>
             <p className="text-muted-foreground">
               You are all set to start your day.
             </p>
