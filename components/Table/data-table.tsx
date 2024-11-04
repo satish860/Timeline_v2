@@ -28,11 +28,15 @@ import { DataTableToolbar } from "./data-table-toolbar";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  placeholder?: string;
+  columnName: string;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  placeholder,
+  columnName,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
@@ -66,7 +70,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="flex h-full flex-col space-y-4">
-      <DataTableToolbar table={table} />
+      <DataTableToolbar table={table} placeholder={placeholder} columnName={columnName}  />
       <div className="flex-1 overflow-hidden rounded-md border">
         <div className="h-full overflow-auto custom-scrollbar">
           <Table>

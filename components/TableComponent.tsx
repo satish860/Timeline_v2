@@ -30,14 +30,16 @@ const TimelineTable: React.FC<TableComponentProps> = ({ data, pdfUrl }) => {
   return (
     <div className="flex gap-4 h-[calc(90vh-4rem)]">
       <div className={`${showPdf ? "w-1/2" : "w-full"} overflow-auto`}>
-        <DataTable columns={columns} data={data} />
+        <DataTable
+          columns={columns}
+          data={data}
+          placeholder="Filter by event..."
+          columnName="event"
+        />
       </div>
       {showPdf && (
         <div className="w-1/2">
-          <PdfViewer
-            pdfUrl={pdfUrl}
-            initialPage={initialPage}
-          />
+          <PdfViewer pdfUrl={pdfUrl} initialPage={initialPage} />
         </div>
       )}
     </div>
