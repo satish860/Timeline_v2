@@ -6,6 +6,7 @@ import { useUser } from "@stackframe/stack"
 
 export default function Home() {
   const user = useUser({ or: "redirect" });
+  console.log("emai", user.primaryEmail);
   const data: Case[] = [
     { id: "1", caseTitle: "Case 1", status: "in progress", priority: "medium", label: "Case 1", shareList: ["Satish", "Rajesh"] },
     { id: "2", caseTitle: "Case 2", status: "in progress", priority: "medium", label: "Case 2", shareList: ["Satish", "Rajesh"] },
