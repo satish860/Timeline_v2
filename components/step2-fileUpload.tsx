@@ -6,17 +6,41 @@ import {
 import { Button } from '@/components/ui/button';
 import { FileText, Loader2, Trash2, Upload } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { useEdgeStore } from "@/lib/edgestore";
+import {
+    EdgeStoreApiClientError,
+    UploadAbortedError,
+} from "@edgestore/react/errors";
+import { Progress } from './ui/progress';
+import axios from 'axios';
 
 interface StepProps {
     onNext: () => void;
     onBack?: () => void;
 }
 
+type FileProgressStatus = "pending" | "uploading" | "uploaded" | "error";
+
+interface FileProgress {
+  file: File;
+  progress: number;
+  status: FileProgressStatus;
+  fileId?: string;
+  fileUrl?: string;
+}
+
+interface FileProgressMap {
+  [filename: string]: FileProgress;
+}
+
 const FileUpload: React.FC<StepProps> = ({ onNext, onBack }) => {
+    const { edgestore } = useEdgeStore();
     const [files, setFiles] = useState<File[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [isDragging, setIsDragging] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [fileProgress, setFileProgress] = useState<FileProgressMap>({});
+    const [fileIds, setFileIds] = useState<string[]>([]);
 
     const isValidFileType = (file: File) => {
         const validTypes = ["application/pdf"];
@@ -59,6 +83,64 @@ const FileUpload: React.FC<StepProps> = ({ onNext, onBack }) => {
                 return;
             }
             setFiles((prevFiles) => [...prevFiles, ...newFiles]);
+            const newFileIds: string[] = [];
+            if (newFiles.length > 0) {
+                try {
+                    const uploadPromises = newFiles.map(async (file) => {
+                        try {
+                            const result = await edgestore.publicFiles.upload({
+                                file,
+                                onProgressChange: (progress) => {
+                                    setFileProgress((prev) => ({
+                                        ...prev,
+                                        [file.name]: { file, progress, status: "uploading" },
+                                    }));
+                                },
+                            });
+
+                            const createFileResponse = await axios.post("/api/createTimelineFile", {
+                                fileUrl: result.url,
+                                filename: file.name,
+                            });
+
+                            console.log(createFileResponse.data.fileId);
+                            const newFileId = createFileResponse.data.fileId;
+                            newFileIds.push(newFileId);
+
+                            setFileProgress((prev) => ({
+                                ...prev,
+                                [file.name]: { file, progress: 100, status: "uploaded" },
+                            }));
+
+                            return newFileId;
+                        } catch (error) {
+                            setFileProgress((prev) => ({
+                                ...prev,
+                                [file.name]: { file, progress: 0, status: "error" },
+                            }));
+
+                            if (error instanceof EdgeStoreApiClientError) {
+                                setError(error.data.message || "An unknown error occurred");
+                            } else if (error instanceof UploadAbortedError) {
+                                setError("Upload aborted");
+                            }
+                            throw error;
+                        }
+                    });
+
+                    try {
+                        const results = await Promise.all(uploadPromises);
+                        console.log('All files uploaded successfully:', results);
+                    } catch (error) {
+                        console.error('One or more uploads failed:', error);
+                    }
+                } catch (error) {
+                    console.error("Error during file uploads:", error);
+                    setError("An error occurred during file upload. Please try again.");
+                }
+            }
+            setFileIds((prevFileIds) => [...prevFileIds, ...newFileIds]);
+            console.log("file ids", fileIds);
         }
         setIsLoading(false);
     };
@@ -132,14 +214,14 @@ const FileUpload: React.FC<StepProps> = ({ onNext, onBack }) => {
                                         <span className="text-sm truncate">{file.name}</span>
                                     </div>
                                     <div className="flex items-center space-x-2">
-                                        {/* {fileProgress[file.name]?.status === "uploaded" ? (
+                                        {fileProgress[file.name]?.status === "uploaded" ? (
                                                 <span className="text-green-600 text-xs">✓</span>
                                             ) : (
                                                 <Progress
                                                     value={fileProgress[file.name]?.progress || 0}
                                                     className="w-20 h-1"
                                                 />
-                                            )} */}
+                                            )}
                                         <button
                                             onClick={() => removeFile(index)}
                                             className="text-gray-400 hover:text-gray-600"
