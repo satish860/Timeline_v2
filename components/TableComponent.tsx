@@ -28,12 +28,12 @@ const TimelineTable: React.FC<TableComponentProps> = ({ data, pdfUrl }) => {
   }, []);
 
   return (
-    <div className="flex gap-4">
-      <div className={showPdf ? "w-1/2" : "w-full"}>
+    <div className="flex gap-4 h-[calc(90vh-4rem)]">
+      <div className={`${showPdf ? "w-1/2" : "w-full"} overflow-auto`}>
         <DataTable columns={columns} data={data} />
       </div>
       {showPdf && (
-        <div className="w-1/2">
+        <div className="w-1/2 overflow-auto custom-scrollbar">
           <PdfViewer
             pdfUrl={pdfUrl}
             initialPage={initialPage}
