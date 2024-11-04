@@ -1,7 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import React, { useState, useEffect } from "react";
-import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
+import { toolbarPlugin } from "@react-pdf-viewer/toolbar";
 import { pageNavigationPlugin } from "@react-pdf-viewer/page-navigation";
 
 const Worker = dynamic(
@@ -21,8 +21,10 @@ interface PDFProps {
 
 export const PdfViewer: React.FC<PDFProps> = ({ pdfUrl, initialPage = 1 }) => {
   const [currentPage, setCurrentPage] = useState(initialPage - 1);
-  const defaultLayoutPluginInstance = defaultLayoutPlugin();
   const pageNavigationPluginInstance = pageNavigationPlugin();
+  const toolbarPluginInstance = toolbarPlugin();
+
+  const { Toolbar } = toolbarPluginInstance;
   const { jumpToPage } = pageNavigationPluginInstance;
   jumpToPage(currentPage);
 
@@ -35,11 +37,12 @@ export const PdfViewer: React.FC<PDFProps> = ({ pdfUrl, initialPage = 1 }) => {
   }
 
   return (
-    <div className="pdf-viewer-container h-[calc(100vh-100px)] overflow-auto">
+    <div className="h-[calc(100vh-100px)] overflow-auto custom-scrollbar">
+      <Toolbar />
       <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.js">
         <Viewer
           fileUrl={pdfUrl}
-          plugins={[defaultLayoutPluginInstance, pageNavigationPluginInstance]}
+          plugins={[pageNavigationPluginInstance, toolbarPluginInstance]}
           enableSmoothScroll={true}
         />
       </Worker>

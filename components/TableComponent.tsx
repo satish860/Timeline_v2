@@ -12,14 +12,14 @@ interface TableComponentProps {
 
 const TimelineTable: React.FC<TableComponentProps> = ({ data, pdfUrl }) => {
   const [showPdf, setShowPdf] = useState(false);
-  const [initialPage, setInitialPage] = useState(1);
+  const [initialPage, setInitialPage] = useState<number | 1>(1);
 
   useEffect(() => {
     const handleShowPdf = (
       event: CustomEvent<{ url: string; page: number }>
     ) => {
-      setInitialPage(event.detail.page);
       setShowPdf(true);
+      setInitialPage(event.detail.page);
     };
     window.addEventListener("showPdf", handleShowPdf as EventListener);
     return () => {
@@ -33,7 +33,7 @@ const TimelineTable: React.FC<TableComponentProps> = ({ data, pdfUrl }) => {
         <DataTable columns={columns} data={data} />
       </div>
       {showPdf && (
-        <div className="w-1/2 overflow-auto custom-scrollbar">
+        <div className="w-1/2">
           <PdfViewer
             pdfUrl={pdfUrl}
             initialPage={initialPage}
