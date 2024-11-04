@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { StackProvider, StackTheme } from "@stackframe/stack";
+import { stackServerApp } from "../stack";
 import localFont from "next/font/local";
 import "./globals.css";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
@@ -34,7 +36,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}><StackProvider app={stackServerApp}><StackTheme>
         <SidebarProvider defaultOpen={defaultOpen}>
           <AppSidebar />
           <SidebarInset>
@@ -58,7 +60,7 @@ export default async function RootLayout({
             <main className="p-6">{children}</main>
           </SidebarInset>
         </SidebarProvider>
-      </body>
+      </StackTheme></StackProvider></body>
     </html>
   );
 }
