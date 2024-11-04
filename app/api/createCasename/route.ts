@@ -16,8 +16,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const record = await xata.db.timeline_delete.create({
+    const record = await xata.db.timeline_Job_Queue.create({
       CaseName: name,
+      Status: "Pending",
     });
 
     return NextResponse.json({ recId: record.id }, { status: 201 });
