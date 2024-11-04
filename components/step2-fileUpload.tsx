@@ -242,13 +242,14 @@ const FileUpload: React.FC<StepProps> = ({ onNext, onBack }) => {
                     )}
                 </div>
             </div>
-            <div className="flex p-4 justify-end space-x-4">
-                <Button variant="outline" onClick={onBack}>
+            <div className="flex justify-end space-x-1">
+                <Button variant="outline" onClick={onBack} className="px-20 py-3">
                     Back
                 </Button>
                 <Button
                     onClick={onNext}
                     disabled={files.length === 0}
+                    className="px-20 py-3"
                 >
                     {isLoading ? (
                         <>
