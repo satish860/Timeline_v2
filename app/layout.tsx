@@ -27,10 +27,12 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Timeline | Win Your Case with Clear Chronology",
-  description: "Professional litigation timeline software that helps lawyers organize case events, visualize chronology, and build stronger legal arguments.",
+  description:
+    "Professional litigation timeline software that helps lawyers organize case events, visualize chronology, and build stronger legal arguments.",
   openGraph: {
     title: "Timeline | Win Your Case with Clear Chronology",
-    description: "Professional litigation timeline software that helps lawyers organize case events, visualize chronology, and build stronger legal arguments.",
+    description:
+      "Professional litigation timeline software that helps lawyers organize case events, visualize chronology, and build stronger legal arguments.",
     type: "website",
     locale: "en_US",
     url: "https://timeline.app", // Replace with your actual URL
@@ -47,7 +49,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Timeline | Win Your Case with Clear Chronology",
-    description: "Professional litigation timeline software that helps lawyers organize case events, visualize chronology, and build stronger legal arguments.",
+    description:
+      "Professional litigation timeline software that helps lawyers organize case events, visualize chronology, and build stronger legal arguments.",
     images: ["/og-image.png"], // Replace with your actual Twitter card image path
   },
   keywords: [
