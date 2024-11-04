@@ -12,7 +12,7 @@ interface TableComponentProps {
 
 const TimelineTable: React.FC<TableComponentProps> = ({ data, pdfUrl }) => {
   const [showPdf, setShowPdf] = useState(false);
-  const [initialPage, setInitialPage] = useState<number | 1>(1);
+  const [initialPage, setInitialPage] = useState<number>(1);
 
   useEffect(() => {
     const handleShowPdf = (
