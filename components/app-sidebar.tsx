@@ -24,6 +24,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 
+import { UserButton } from "@stackframe/stack";
 // Example data
 const data = {
   navMain: [
@@ -90,6 +91,9 @@ export function AppSidebar() {
             </SidebarGroup>
           ))}
         </SidebarContent>
+        <div className="w-full h-14 flex justify-between items-center container">
+          <UserButton />
+        </div>
         <SidebarRail />
       </Sidebar>
     </>
