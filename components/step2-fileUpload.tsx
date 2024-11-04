@@ -4,7 +4,7 @@ import {
     CardContent
 } from "@/components/ui/card"
 import { Button } from '@/components/ui/button';
-import { FileText, Trash2, Upload } from 'lucide-react';
+import { FileText, Loader2, Trash2, Upload } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface StepProps {
@@ -16,7 +16,6 @@ const FileUpload: React.FC<StepProps> = ({ onNext, onBack }) => {
     const [files, setFiles] = useState<File[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [isDragging, setIsDragging] = useState(false);
-    const [disableUpload, setDisableUpload] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
 
     const isValidFileType = (file: File) => {
@@ -45,7 +44,6 @@ const FileUpload: React.FC<StepProps> = ({ onNext, onBack }) => {
             isValidFileType
         );
         if (droppedFiles.length > 0) {
-            setDisableUpload(false);
             setFiles((prevFiles) => [...prevFiles, ...droppedFiles]);
         }
     }, []);
@@ -56,8 +54,13 @@ const FileUpload: React.FC<StepProps> = ({ onNext, onBack }) => {
         setIsLoading(true);
         if (event.target.files) {
             const newFiles = Array.from(event.target.files).filter(isValidFileType);
+            if (files.length + newFiles.length > 50) {
+                setError("Maximum number of files (50) exceeded.");
+                return;
+            }
             setFiles((prevFiles) => [...prevFiles, ...newFiles]);
         }
+        setIsLoading(false);
     };
 
     const removeFile = async (index: number) => {
@@ -68,10 +71,10 @@ const FileUpload: React.FC<StepProps> = ({ onNext, onBack }) => {
 
             newFiles.splice(index, 1);
             if (newFiles.length === 0) {
-                setDisableUpload(true);
             }
             return newFiles;
         });
+        setError(null);
     };
 
     return (
@@ -147,7 +150,7 @@ const FileUpload: React.FC<StepProps> = ({ onNext, onBack }) => {
                                 </div>
                             ))}
                         </ScrollArea>
-                    ): (
+                    ) : (
                         <div className="h-full flex items-center justify-center text-gray-400 text-sm">
                             Your files will show up here
                         </div>
@@ -157,12 +160,22 @@ const FileUpload: React.FC<StepProps> = ({ onNext, onBack }) => {
                     )}
                 </div>
             </div>
-            <div className="flex justify-end pt-1 pl-2">
+            <div className="flex p-4 justify-end space-x-4">
                 <Button variant="outline" onClick={onBack}>
                     Back
                 </Button>
-                <Button onClick={onNext}>
-                    Next
+                <Button
+                    onClick={onNext}
+                    disabled={files.length === 0}
+                >
+                    {isLoading ? (
+                        <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Saving...
+                        </>
+                    ) : (
+                        'Next'
+                    )}
                 </Button>
             </div>
         </CardContent>

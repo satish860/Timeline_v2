@@ -35,6 +35,7 @@ const TimelineDetails: React.FC<StepProps> = ({ onNext }) => {
             }
 
             const data = await response.json();
+            console.log("rec_id", data.recId)
             
             onNext();
 
