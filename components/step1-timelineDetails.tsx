@@ -13,35 +13,35 @@ interface StepProps {
     onBack?: () => void;
 }
 
-const TimelineDetails: React.FC<StepProps> = ({ onNext }) => {
-    const [caseName, setCaseName] = useState("");
+interface TimelineDetailsProps extends StepProps {
+    timelineData: {
+        caseName: string;
+        areaOfLaw: string;
+        recId?: string;
+    };
+    setTimelineData: (data: { caseName: string; areaOfLaw: string; recId?: string }) => void;
+    onCreateCase: (data: { caseName: string; areaOfLaw: string }) => Promise<string>;
+}
+
+const TimelineDetails: React.FC<TimelineDetailsProps> = ({ 
+    onNext, 
+    onBack,
+    timelineData, 
+    setTimelineData,
+    onCreateCase
+}) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async () => {
         setIsLoading(true);
         try {
-            const response = await fetch('/api/createCasename', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    caseName,
-                }),
+            await onCreateCase({
+                caseName: timelineData.caseName,
+                areaOfLaw: timelineData.areaOfLaw,
             });
-
-            if (!response.ok) {
-                throw new Error(`Error: ${response.status}`);
-            }
-
-            const data = await response.json();
-            console.log("rec_id", data.recId)
-            
             onNext();
-
         } catch (error) {
             console.error('Error creating case:', error);
-            
         } finally {
             setIsLoading(false);
         }
@@ -55,8 +55,8 @@ const TimelineDetails: React.FC<StepProps> = ({ onNext }) => {
                 </label>
                 <Input
                     id="case-name"
-                    value={caseName}
-                    onChange={(e) => setCaseName(e.target.value)}
+                    value={timelineData.caseName}
+                    onChange={(e) => setTimelineData({ ...timelineData, caseName: e.target.value })}
                     placeholder="Case name"
                     className="w-full"
                 />
@@ -81,7 +81,7 @@ const TimelineDetails: React.FC<StepProps> = ({ onNext }) => {
             <div className="flex justify-end pt-4">
             <Button 
                     onClick={handleSubmit}
-                    disabled={isLoading || caseName.trim() === ""}
+                    disabled={isLoading || timelineData.caseName.trim() === ""}
                 >
                     {isLoading ? (
                         <>

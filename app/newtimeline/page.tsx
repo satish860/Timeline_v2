@@ -8,8 +8,19 @@ import TimelineDetails from '@/components/step1-timelineDetails';
 import FileUpload from '@/components/step2-fileUpload';
 import Review from '@/components/step3-reviewDetails';
 
+interface TimelineFormData {
+    caseName: string;
+    areaOfLaw: string;
+    recId?: string;
+}
+
 const Page: React.FC = () => {
     const [currentStep, setCurrentStep] = useState(1);
+    const [timelineData, setTimelineData] = useState<TimelineFormData>({
+        caseName: '',
+        areaOfLaw: '',
+        recId: undefined
+    });
 
     const handleNext = () => {
         setCurrentStep(prev => Math.min(prev + 1, 3));
@@ -17,6 +28,29 @@ const Page: React.FC = () => {
 
     const handleBack = () => {
         setCurrentStep(prev => Math.max(prev - 1, 1));
+    };
+
+    const handleCreateCase = async (data: { caseName: string; areaOfLaw: string }) => {
+        try {
+            const response = await fetch('/api/createCasename', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status}`);
+            }
+
+            const responseData = await response.json();
+            setTimelineData(prev => ({ ...prev, recId: responseData.recId }));
+            return responseData.recId;
+        } catch (error) {
+            console.error('Error creating case:', error);
+            throw error;
+        }
     };
 
     return (
@@ -50,7 +84,12 @@ const Page: React.FC = () => {
                 </CardHeader>
                 
                 {currentStep === 1 && (
-                    <TimelineDetails onNext={handleNext} />
+                    <TimelineDetails 
+                        onNext={handleNext}
+                        timelineData={timelineData}
+                        setTimelineData={setTimelineData}
+                        onCreateCase={handleCreateCase}
+                    />
                 )}
                 {currentStep === 2 && (
                     <FileUpload onNext={handleNext} onBack={handleBack} />
