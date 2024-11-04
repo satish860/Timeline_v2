@@ -1,0 +1,14 @@
+{
+  "id": "mig_cqhjhsm3dlp0or168ev0",
+  "parentID": "mig_cqhgsue3dlp0or168c3g",
+  "checksum": "1:79b253abf812046da8edcd8966f25a61ecbfe72a1b45e0edccb87665693d3f00",
+  "operations": [
+    {
+      "renameColumn": {
+        "newName": "newsletter",
+        "oldName": "newsLetter",
+        "table": "summaries"
+      }
+    }
+  ]
+}

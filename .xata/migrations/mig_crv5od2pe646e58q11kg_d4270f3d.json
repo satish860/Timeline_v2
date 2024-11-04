@@ -1,0 +1,12 @@
+{
+  "id": "mig_crv5od2pe646e58q11kg",
+  "parentID": "mig_cr6tqh4ji0inhbebe8pg",
+  "checksum": "1:d4270f3df15ef13af0a6eaa61c0b8e1b180fcbf2127d1bbd4ddce342b02fecec",
+  "operations": [
+    {
+      "addTable": {
+        "table": "timeline_files_data"
+      }
+    }
+  ]
+}

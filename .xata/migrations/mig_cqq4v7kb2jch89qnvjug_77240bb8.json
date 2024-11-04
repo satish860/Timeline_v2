@@ -1,0 +1,16 @@
+{
+  "id": "mig_cqq4v7kb2jch89qnvjug",
+  "parentID": "mig_cqq4v2abdftasb7hglo0",
+  "checksum": "1:77240bb8ee7c0edbfc253be38e3304a37bc96a9338726a8c9e3280e4f90c8e54",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "status",
+          "type": "text"
+        },
+        "table": "research"
+      }
+    }
+  ]
+}

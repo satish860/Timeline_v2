@@ -1,0 +1,16 @@
+{
+  "id": "mig_crvphm2kv9ogfdp0apl0",
+  "parentID": "mig_crvphgqkv9ogfdp0apk0",
+  "checksum": "1:7223afed55ac630e2ffea666cef3d605dfc517e142a33cc9bc7ae92e9e70ba88",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "workspace_id",
+          "type": "text"
+        },
+        "table": "timeline_Job_Queue"
+      }
+    }
+  ]
+}

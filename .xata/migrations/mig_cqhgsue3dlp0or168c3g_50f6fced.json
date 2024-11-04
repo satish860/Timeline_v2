@@ -1,0 +1,16 @@
+{
+  "id": "mig_cqhgsue3dlp0or168c3g",
+  "parentID": "mig_cqhgsogihk4ub131mg4g",
+  "checksum": "1:50f6fced3c887415bed9eab3bfcce626e1c0e56630d1396057945e1032688b9b",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "layman",
+          "type": "string"
+        },
+        "table": "summaries"
+      }
+    }
+  ]
+}

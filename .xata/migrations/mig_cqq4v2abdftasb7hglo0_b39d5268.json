@@ -1,0 +1,16 @@
+{
+  "id": "mig_cqq4v2abdftasb7hglo0",
+  "parentID": "mig_cqq4uqcb2jch89qnvjtg",
+  "checksum": "1:b39d52684592e398acdf7846591ba3e7cc9c684054f3474910a30b7e9a46211b",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "upload_folder",
+          "type": "file[]"
+        },
+        "table": "research"
+      }
+    }
+  ]
+}

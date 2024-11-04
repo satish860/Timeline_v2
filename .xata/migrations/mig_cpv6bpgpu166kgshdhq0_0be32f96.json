@@ -1,0 +1,19 @@
+{
+  "id": "mig_cpv6bpgpu166kgshdhq0",
+  "parentID": "mig_cpv6bfoj2913t7idtt30",
+  "checksum": "1:0be32f96e15d25d49edfa0fc146afd1a9211826c51728cc1fd987c64c67aea50",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "user",
+          "type": "link",
+          "link": {
+            "table": "Userdata"
+          }
+        },
+        "table": "ChatData"
+      }
+    }
+  ]
+}

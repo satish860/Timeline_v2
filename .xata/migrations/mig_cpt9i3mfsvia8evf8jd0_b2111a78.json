@@ -1,0 +1,16 @@
+{
+  "id": "mig_cpt9i3mfsvia8evf8jd0",
+  "parentID": "mig_cpt9hv96jqn7barehegg",
+  "checksum": "1:b2111a7801309446d35e7309db76af0e32335874a4f3e15a0fa442a27a459a76",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "url",
+          "type": "string"
+        },
+        "table": "fileData"
+      }
+    }
+  ]
+}

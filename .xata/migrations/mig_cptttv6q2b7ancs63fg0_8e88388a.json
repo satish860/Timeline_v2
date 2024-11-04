@@ -1,0 +1,13 @@
+{
+  "id": "mig_cptttv6q2b7ancs63fg0",
+  "parentID": "mig_cpttqieq2b7ancs63c1g",
+  "checksum": "1:8e88388adaad619de68aa9890e05adbd5fd06ad4325aedb3db1efb8a5ee64688",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "workspace_id",
+        "table": "fileData"
+      }
+    }
+  ]
+}

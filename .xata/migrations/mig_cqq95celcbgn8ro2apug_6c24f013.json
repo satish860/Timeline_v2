@@ -1,0 +1,12 @@
+{
+  "id": "mig_cqq95celcbgn8ro2apug",
+  "parentID": "mig_cqq6rpcb2jch89qnvke0",
+  "checksum": "1:6c24f013fade047f14bf4453edfc355b7083182853b6cab37653353989f17ed7",
+  "operations": [
+    {
+      "addTable": {
+        "table": "folderData"
+      }
+    }
+  ]
+}

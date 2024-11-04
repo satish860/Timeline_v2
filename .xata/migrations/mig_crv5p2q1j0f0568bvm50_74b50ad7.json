@@ -1,0 +1,16 @@
+{
+  "id": "mig_crv5p2q1j0f0568bvm50",
+  "parentID": "mig_crv5ouqpe646e58q11lg",
+  "checksum": "1:74b50ad76ec947e67cb227d42021ef98396a0b66fb3a3f6445e422e115e3159c",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "total_pages",
+          "type": "int"
+        },
+        "table": "timeline_files_data"
+      }
+    }
+  ]
+}

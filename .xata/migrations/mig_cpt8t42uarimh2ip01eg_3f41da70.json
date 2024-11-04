@@ -1,0 +1,16 @@
+{
+  "id": "mig_cpt8t42uarimh2ip01eg",
+  "parentID": "mig_cpt8rqefsvia8evf8ig0",
+  "checksum": "1:3f41da70e256e20771f2aac7e3b6bb2997e97fcccfea4c50daf28d448dc29d06",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "url",
+          "type": "string"
+        },
+        "table": "workspace"
+      }
+    }
+  ]
+}

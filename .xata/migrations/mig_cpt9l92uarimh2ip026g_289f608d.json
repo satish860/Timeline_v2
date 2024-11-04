@@ -1,0 +1,13 @@
+{
+  "id": "mig_cpt9l92uarimh2ip026g",
+  "parentID": "mig_cpt9l7efsvia8evf8jg0",
+  "checksum": "1:289f608dc997bf1309f62925c9d9c13310558a9e3db86a478490b0c14ebee679",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "wordFile",
+        "table": "workspace"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mig_cs2ifaa2go8te7ad4h1g",
+  "parentID": "mig_cs2if322go8te7ad4gvg",
+  "checksum": "1:f4a5949c7bcc16e0368b7aefba57cb54661ed0fcbcb69bd3cad5ae70a35377ec",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "file_order",
+          "type": "int"
+        },
+        "table": "timeline_files_data"
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "mig_cr6tqh4ji0inhbebe8pg",
+  "parentID": "mig_cr6t5jcn2urj4brhtulg",
+  "checksum": "1:3f5e45892c8fca871f5dab24f0ef0b5fa23428169af1e337b90f8e9aa2c8538d",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Kycflag",
+          "type": "bool",
+          "defaultValue": "true"
+        },
+        "table": "Kyc"
+      }
+    }
+  ]
+}

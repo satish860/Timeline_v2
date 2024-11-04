@@ -1,0 +1,17 @@
+{
+  "id": "mig_cptt55i6qik0p0m8t7rg",
+  "parentID": "mig_cptrh2am2s7am2bfnc10",
+  "checksum": "1:d257daacbe01b953b67cc75e2a6ab328a7c6c214860513ec7871443474d3bca7",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "workspace_id",
+          "type": "string",
+          "unique": true
+        },
+        "table": "fileData"
+      }
+    }
+  ]
+}

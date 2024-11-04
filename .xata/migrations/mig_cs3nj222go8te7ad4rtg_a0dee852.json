@@ -1,0 +1,16 @@
+{
+  "id": "mig_cs3nj222go8te7ad4rtg",
+  "parentID": "mig_cs3niv22go8te7ad4rsg",
+  "checksum": "1:a0dee8524d777a6189edf00c4b2b6899216da329ce502373b5241f28477ba674",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "category",
+          "type": "text"
+        },
+        "table": "podcast-samples"
+      }
+    }
+  ]
+}

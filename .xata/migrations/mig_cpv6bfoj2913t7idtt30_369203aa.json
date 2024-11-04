@@ -1,0 +1,14 @@
+{
+  "id": "mig_cpv6bfoj2913t7idtt30",
+  "parentID": "mig_cpv6bc8pu166kgshdhp0",
+  "checksum": "1:369203aa5fe61bb35c3f81f4a41c2cb0c4f04c124dfab24db4c14365fa5aaa7e",
+  "operations": [
+    {
+      "renameColumn": {
+        "newName": "callback_url",
+        "oldName": "callb",
+        "table": "fileData"
+      }
+    }
+  ]
+}

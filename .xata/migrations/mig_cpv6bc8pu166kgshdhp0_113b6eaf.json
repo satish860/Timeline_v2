@@ -1,0 +1,16 @@
+{
+  "id": "mig_cpv6bc8pu166kgshdhp0",
+  "parentID": "mig_cpv6bb0pu166kgshdho0",
+  "checksum": "1:113b6eafc4dedce3119ff58ccf4b15ef03a68daaa6e2a45643c9a1c99b283fed",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "callb",
+          "type": "string"
+        },
+        "table": "fileData"
+      }
+    }
+  ]
+}

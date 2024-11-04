@@ -1,0 +1,16 @@
+{
+  "id": "mig_cs2ec8d4rshpd1p6d050",
+  "parentID": "mig_cs2bqpq2go8te7ad4e5g",
+  "checksum": "1:ccd1a19e2f7df2ea0e514f7e46295f660a78c2cb187f805c239c13b6712ea313",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "user_id",
+          "type": "text"
+        },
+        "table": "timeline_Job_Queue"
+      }
+    }
+  ]
+}

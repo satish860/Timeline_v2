@@ -1,0 +1,16 @@
+{
+  "id": "mig_crv5r5ksq5jrgcvdcp50",
+  "parentID": "mig_crv5r0qpe646e58q11q0",
+  "checksum": "1:0e833ee36b4a7004c14b4783b9c7236cc15c254324d22a25682fa67c9cbf1079",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "end_page",
+          "type": "int"
+        },
+        "table": "timeline_file_split_data"
+      }
+    }
+  ]
+}

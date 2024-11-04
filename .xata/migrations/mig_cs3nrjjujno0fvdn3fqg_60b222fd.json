@@ -1,0 +1,13 @@
+{
+  "id": "mig_cs3nrjjujno0fvdn3fqg",
+  "parentID": "mig_cs3nmkrujno0fvdn3fn0",
+  "checksum": "1:60b222fd8e8abc4e5830b70e3b1bf35409dc26053b62884d8d4316f2cc339e44",
+  "operations": [
+    {
+      "renameTable": {
+        "newName": "podcast_samples",
+        "oldName": "podcast-samples"
+      }
+    }
+  ]
+}

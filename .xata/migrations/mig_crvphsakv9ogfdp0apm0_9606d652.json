@@ -1,0 +1,16 @@
+{
+  "id": "mig_crvphsakv9ogfdp0apm0",
+  "parentID": "mig_crvphm2kv9ogfdp0apl0",
+  "checksum": "1:9606d652a32330358d9b5ed6491661983a21729aec7ef4c9d4142a500516e3bb",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "event_list_url",
+          "type": "text"
+        },
+        "table": "timeline_Job_Queue"
+      }
+    }
+  ]
+}

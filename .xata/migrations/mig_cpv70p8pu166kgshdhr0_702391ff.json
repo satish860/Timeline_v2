@@ -1,0 +1,13 @@
+{
+  "id": "mig_cpv70p8pu166kgshdhr0",
+  "parentID": "mig_cpv6bpgpu166kgshdhq0",
+  "checksum": "1:702391ffffdfe1721cc94392883b4314648b529c106ddb170bd38eeebb4e4b1b",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "callback_url",
+        "table": "fileData"
+      }
+    }
+  ]
+}

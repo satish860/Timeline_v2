@@ -1,0 +1,16 @@
+{
+  "id": "mig_cs1sppt4rshpd1p6co1g",
+  "parentID": "mig_cs1ntv22go8te7ad48j0",
+  "checksum": "1:9789b8a13026e6de27fa2bc0bd14a415a7a1c60d01c0752e32c9969e3f7defdf",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Case_Notes_Url",
+          "type": "text"
+        },
+        "table": "timeline_Job_Queue"
+      }
+    }
+  ]
+}

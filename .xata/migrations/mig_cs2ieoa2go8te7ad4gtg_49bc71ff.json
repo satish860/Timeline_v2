@@ -1,0 +1,17 @@
+{
+  "id": "mig_cs2ieoa2go8te7ad4gtg",
+  "parentID": "mig_cs2f1s54rshpd1p6d0f0",
+  "checksum": "1:49bc71ff021f8e736351b1030970a6a75e28110fc2db9e3c632f1e4f7a5ad6f3",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "file_description",
+          "type": "text",
+          "defaultValue": " Dinesh Madan v. Anil Madan & Anr., concerns a suit for partition, injunction, and rendition of accounts regarding property E-15, Green Park Main, New Delhi (PG:7).  The plaintiff, Dinesh Madan, claims a 50% share based on a gift deed from his mother (PG:9), while defendants Anil and Sunil Madan contest this, citing an oral family settlement granting Anil sole possession (PG:23).  Anil filed a counterclaim, alleging forged documents and seeking partition of other jointly owned properties (PG:115).  Defendant 2, Sunil, largely agrees with the plaintiff's claim (PG:67).  The court ordered valuation reports for the properties, which were submitted (PG:128, PG:134-159).  The case involves complex claims of fraud, forged documents, and conflicting interpretations of ownership and family agreements."
+        },
+        "table": "timeline_files_data"
+      }
+    }
+  ]
+}

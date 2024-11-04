@@ -1,0 +1,16 @@
+{
+  "id": "mig_cqhgsam3dlp0or168c1g",
+  "parentID": "mig_cqhgrtu3dlp0or168c0g",
+  "checksum": "1:9e1de2e83223a66c4fe603a182484b72842a7d09ce1baf618e16d50c80bc1e1a",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "newsLetter",
+          "type": "string"
+        },
+        "table": "summaries"
+      }
+    }
+  ]
+}

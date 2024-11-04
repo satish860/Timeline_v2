@@ -1,0 +1,16 @@
+{
+  "id": "mig_cr6t5jcn2urj4brhtulg",
+  "parentID": "mig_cr6t4pivub4i4bos4k4g",
+  "checksum": "1:65b2110c4fc24143c6240dbe7e8fe6b326b92ea5e5bca0af6e7c9ad11ed096fc",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Userid",
+          "type": "text"
+        },
+        "table": "Kyc"
+      }
+    }
+  ]
+}

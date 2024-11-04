@@ -1,0 +1,16 @@
+{
+  "id": "mig_cpva9qrses7pjgp6b1eg",
+  "parentID": "mig_cpv70p8pu166kgshdhr0",
+  "checksum": "1:27ae5d230a815f55b8f7b284da119ca21f99dede074f1d1d37d98ee4be465510",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "callback_url",
+          "type": "string"
+        },
+        "table": "fileData"
+      }
+    }
+  ]
+}

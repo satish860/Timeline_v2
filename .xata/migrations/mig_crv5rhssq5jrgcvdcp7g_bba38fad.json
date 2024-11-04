@@ -1,0 +1,16 @@
+{
+  "id": "mig_crv5rhssq5jrgcvdcp7g",
+  "parentID": "mig_crv5rd2pe646e58q11sg",
+  "checksum": "1:bba38fad7a3527e00b65aaaa404b02d5dad3138774fc294d8c3b4d01ca6b244a",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "workspace_id",
+          "type": "text"
+        },
+        "table": "timeline_file_split_data"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mig_cq5p8efarnk9e285u040",
+  "parentID": "mig_cq5o2unpgrgdcludckp0",
+  "checksum": "1:caed2c8329e1dfa9a7d8579f14649e0fad1ed9a0384303a060230350db1ab16f",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "genai_file_id",
+          "type": "string"
+        },
+        "table": "fileData"
+      }
+    }
+  ]
+}

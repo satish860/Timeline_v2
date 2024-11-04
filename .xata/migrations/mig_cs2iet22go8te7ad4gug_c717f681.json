@@ -1,0 +1,13 @@
+{
+  "id": "mig_cs2iet22go8te7ad4gug",
+  "parentID": "mig_cs2ieoa2go8te7ad4gtg",
+  "checksum": "1:c717f68171d2f399e54e247ba2188d1319d030fc9044ec87a56700f615de563c",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "file_description",
+        "table": "timeline_files_data"
+      }
+    }
+  ]
+}

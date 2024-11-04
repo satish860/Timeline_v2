@@ -1,0 +1,13 @@
+{
+  "id": "mig_cpt9l5ufsvia8evf8jf0",
+  "parentID": "mig_cpt9i9efsvia8evf8je0",
+  "checksum": "1:3830bde22721f6b0528a5e611a036c81d58a40c0de5f9fcc6e7e1875a45c5805",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "url",
+        "table": "workspace"
+      }
+    }
+  ]
+}

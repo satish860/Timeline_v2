@@ -1,0 +1,14 @@
+{
+  "id": "mig_cs3p683ujno0fvdn3g5g",
+  "parentID": "mig_cs3nrjjujno0fvdn3fqg",
+  "checksum": "1:6347d137c0824b91f68ab417d09550d4e2010ec1e074fd36b70ae1bc98086247",
+  "operations": [
+    {
+      "renameColumn": {
+        "newName": "summary",
+        "oldName": "summary_url",
+        "table": "podcast_samples"
+      }
+    }
+  ]
+}

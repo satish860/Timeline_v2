@@ -1,0 +1,13 @@
+{
+  "id": "mig_cpv6b9opu166kgshdhn0",
+  "parentID": "mig_cpv66nefk7627jum4tbg",
+  "checksum": "1:61115fb9ac26ad83cb0a277436927a869b73e8f2d1794fb7920b861bf252db31",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "chat_id",
+        "table": "Userdata"
+      }
+    }
+  ]
+}

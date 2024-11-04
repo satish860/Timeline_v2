@@ -1,0 +1,19 @@
+{
+  "id": "mig_cs2f1s54rshpd1p6d0f0",
+  "parentID": "mig_cs2ec8d4rshpd1p6d050",
+  "checksum": "1:90de4eca25ba064278b55a22dffc43c6af738f1896de1a8230a279c1be099637",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "workspace",
+          "type": "link",
+          "link": {
+            "table": "timeline_Job_Queue"
+          }
+        },
+        "table": "timeline_files_data"
+      }
+    }
+  ]
+}

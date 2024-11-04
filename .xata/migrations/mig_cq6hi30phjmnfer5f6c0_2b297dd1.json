@@ -1,0 +1,16 @@
+{
+  "id": "mig_cq6hi30phjmnfer5f6c0",
+  "parentID": "mig_cq6hhuvdgd5bjvgc5ojg",
+  "checksum": "1:2b297dd1f27aa058eaa9f727a7dd73d563e8bed3337ff95d6f5960f8c1ad61c5",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Sources",
+          "type": "int"
+        },
+        "table": "workspace"
+      }
+    }
+  ]
+}

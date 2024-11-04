@@ -1,0 +1,16 @@
+{
+  "id": "mig_cs1ntv22go8te7ad48j0",
+  "parentID": "mig_crvpi02kv9ogfdp0apn0",
+  "checksum": "1:f4251bf6e639ff847aa5f69694480fec18a7f41dba517b09cb034edc0b8ba55b",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Timeline_url",
+          "type": "text"
+        },
+        "table": "timeline_Job_Queue"
+      }
+    }
+  ]
+}

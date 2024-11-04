@@ -1,0 +1,13 @@
+{
+  "id": "mig_cqq9hbelcbgn8ro2aq7g",
+  "parentID": "mig_cqq9h86lcbgn8ro2aq6g",
+  "checksum": "1:0af9cae485ece9bb1f7835f4701d9ff9e868adb0b126d3622e6594ff61ee4d2d",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "status",
+        "table": "research"
+      }
+    }
+  ]
+}

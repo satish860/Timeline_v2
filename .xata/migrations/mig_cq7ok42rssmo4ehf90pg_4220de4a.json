@@ -1,0 +1,16 @@
+{
+  "id": "mig_cq7ok42rssmo4ehf90pg",
+  "parentID": "mig_cq7maubj824qps64sqe0",
+  "checksum": "1:4220de4a0fdbb749627b119b443186acef34e42d8eed3afa7800b61b386c9d80",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "pdf_url",
+          "type": "string"
+        },
+        "table": "fileData"
+      }
+    }
+  ]
+}

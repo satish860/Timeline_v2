@@ -1,0 +1,16 @@
+{
+  "id": "mig_cqhgsogihk4ub131mg4g",
+  "parentID": "mig_cqhgskm3dlp0or168c2g",
+  "checksum": "1:7280186c76d2300b7bfce864effd70addf3452f7924c728ad72db4b5ed68188a",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "brief",
+          "type": "string"
+        },
+        "table": "summaries"
+      }
+    }
+  ]
+}

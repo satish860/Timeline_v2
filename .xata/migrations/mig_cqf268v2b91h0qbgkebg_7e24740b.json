@@ -1,0 +1,16 @@
+{
+  "id": "mig_cqf268v2b91h0qbgkebg",
+  "parentID": "mig_cqcb1kn2b91h0qbgj2og",
+  "checksum": "1:7e24740b19dc27fe4244a65f91b6c0ae2017f01586981fe46e638f6f810333d5",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "word_url",
+          "type": "string"
+        },
+        "table": "fileData"
+      }
+    }
+  ]
+}

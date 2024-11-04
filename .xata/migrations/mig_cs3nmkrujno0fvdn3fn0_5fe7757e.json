@@ -1,0 +1,16 @@
+{
+  "id": "mig_cs3nmkrujno0fvdn3fn0",
+  "parentID": "mig_cs3nkvt4rshpd1p6djeg",
+  "checksum": "1:5fe7757ecc936b52b9e66183e4acc10f9fc707dcdc83b77cec962c87ea4db009",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "poster_url",
+          "type": "text"
+        },
+        "table": "podcast-samples"
+      }
+    }
+  ]
+}

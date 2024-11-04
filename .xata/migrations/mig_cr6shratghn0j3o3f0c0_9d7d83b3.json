@@ -1,0 +1,16 @@
+{
+  "id": "mig_cr6shratghn0j3o3f0c0",
+  "parentID": "mig_cr6sho4n2urj4brhtrdg",
+  "checksum": "1:9d7d83b3039a0f2e56365cf09e3f6ae0f92ca6330f384c8ece488cfd0ab826bd",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Role",
+          "type": "text"
+        },
+        "table": "Kyc"
+      }
+    }
+  ]
+}

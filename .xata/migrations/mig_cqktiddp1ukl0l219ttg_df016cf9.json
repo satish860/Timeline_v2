@@ -1,0 +1,13 @@
+{
+  "id": "mig_cqktiddp1ukl0l219ttg",
+  "parentID": "mig_cqktia5p1ukl0l219tsg",
+  "checksum": "1:df016cf9059f740ca0d5fc4d1ff56a6a0f8d5190971317fd357f14796b4f3528",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "Sources",
+        "table": "workspace"
+      }
+    }
+  ]
+}

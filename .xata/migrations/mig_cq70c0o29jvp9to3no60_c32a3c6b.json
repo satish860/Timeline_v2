@@ -1,0 +1,16 @@
+{
+  "id": "mig_cq70c0o29jvp9to3no60",
+  "parentID": "mig_cq70bp3rvs6h2a8dm5rg",
+  "checksum": "1:c32a3c6ba0c5b837f9e026f2f8e4bec1bab0f6b3106fa54006ad0d462a0fdfab",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "workspace_id",
+          "type": "string"
+        },
+        "table": "workspaceChatTable"
+      }
+    }
+  ]
+}

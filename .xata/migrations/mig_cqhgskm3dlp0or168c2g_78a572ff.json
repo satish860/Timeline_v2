@@ -1,0 +1,16 @@
+{
+  "id": "mig_cqhgskm3dlp0or168c2g",
+  "parentID": "mig_cqhgsg0ihk4ub131mg3g",
+  "checksum": "1:78a572fffd8f49e0d3f50ce288fb407021f55b95689ebc5db0d5ca43c1af751c",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "irac",
+          "type": "string"
+        },
+        "table": "summaries"
+      }
+    }
+  ]
+}

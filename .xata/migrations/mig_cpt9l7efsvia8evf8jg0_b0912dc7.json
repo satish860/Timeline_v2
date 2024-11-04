@@ -1,0 +1,13 @@
+{
+  "id": "mig_cpt9l7efsvia8evf8jg0",
+  "parentID": "mig_cpt9l5ufsvia8evf8jf0",
+  "checksum": "1:b0912dc7acdabf37143239da43a54970d1521e5125f8727de36864ed493c1f8c",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "pdfFile",
+        "table": "workspace"
+      }
+    }
+  ]
+}

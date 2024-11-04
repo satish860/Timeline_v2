@@ -1,0 +1,12 @@
+{
+  "id": "mig_cq70bp3rvs6h2a8dm5rg",
+  "parentID": "mig_cq6vkmg29jvp9to3nno0",
+  "checksum": "1:56ee088a9b71fe7f476534e7602030352601d1c08e23ab0fda420886559eae4a",
+  "operations": [
+    {
+      "addTable": {
+        "table": "workspaceChatTable"
+      }
+    }
+  ]
+}

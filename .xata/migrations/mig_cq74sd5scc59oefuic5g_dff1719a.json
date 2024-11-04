@@ -1,0 +1,16 @@
+{
+  "id": "mig_cq74sd5scc59oefuic5g",
+  "parentID": "mig_cq70cbg29jvp9to3no70",
+  "checksum": "1:dff1719a7be0ddecafe1b6edab58993fba8b4c10fd31a6f14a5768d74a23a5a1",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Timeline_url",
+          "type": "string"
+        },
+        "table": "workspace"
+      }
+    }
+  ]
+}

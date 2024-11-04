@@ -1,0 +1,16 @@
+{
+  "id": "mig_cptqi1am2s7am2bfnbg0",
+  "parentID": "mig_cpt9l92uarimh2ip026g",
+  "checksum": "1:b3da797c91485821d23d78995b7c6235aaefc3260d8a0f5d7a5c50ef1fee4037",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "md",
+          "type": "string"
+        },
+        "table": "fileData"
+      }
+    }
+  ]
+}

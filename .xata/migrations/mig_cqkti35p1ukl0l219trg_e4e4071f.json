@@ -1,0 +1,13 @@
+{
+  "id": "mig_cqkti35p1ukl0l219trg",
+  "parentID": "mig_cqhjhsm3dlp0or168ev0",
+  "checksum": "1:e4e4071f56cc428cbd0b3bf164b551f635b670aeded6f6304d9dacfb94aeae3a",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "chatTitle",
+        "table": "workspace"
+      }
+    }
+  ]
+}

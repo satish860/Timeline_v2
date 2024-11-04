@@ -1,0 +1,16 @@
+{
+  "id": "mig_cq6hhuvdgd5bjvgc5ojg",
+  "parentID": "mig_cq6eiq7qrg0lse1mn78g",
+  "checksum": "1:bfad4168f7adcac1017290f32b27e02ec49de03d58105715ac15c09e5a5f6f17",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "TokenCount",
+          "type": "int"
+        },
+        "table": "workspace"
+      }
+    }
+  ]
+}

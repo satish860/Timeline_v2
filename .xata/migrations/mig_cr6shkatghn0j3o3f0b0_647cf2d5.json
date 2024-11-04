@@ -1,0 +1,16 @@
+{
+  "id": "mig_cr6shkatghn0j3o3f0b0",
+  "parentID": "mig_cr6shfsn2urj4brhtrcg",
+  "checksum": "1:647cf2d53aa68278661fc180f8504a4ed395d6a8d57909756e822ad98cee8c34",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Workplace",
+          "type": "text"
+        },
+        "table": "Kyc"
+      }
+    }
+  ]
+}

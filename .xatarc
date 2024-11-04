@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Poorna-Prakash-s-workspace-g2an37.us-east-1.xata.sh/db/RagDatabase",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}

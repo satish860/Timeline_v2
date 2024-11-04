@@ -1,0 +1,16 @@
+{
+  "id": "mig_cq7maubj824qps64sqe0",
+  "parentID": "mig_cq74sd5scc59oefuic5g",
+  "checksum": "1:4713f42586e4a0192d3fa85ea4419b31a0fce9fbe0d573b01d821ed3250875a9",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Summary_url",
+          "type": "string"
+        },
+        "table": "workspace"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mig_cqq95httvffvqegsnjk0",
+  "parentID": "mig_cqq95celcbgn8ro2apug",
+  "checksum": "1:dccd6fd4077185908cf54a2d7fdf18c342eb84a11a3b5c343e609a2d6d4c532a",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "research_id",
+          "type": "text"
+        },
+        "table": "folderData"
+      }
+    }
+  ]
+}

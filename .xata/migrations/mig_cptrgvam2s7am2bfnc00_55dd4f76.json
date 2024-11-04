@@ -1,0 +1,13 @@
+{
+  "id": "mig_cptrgvam2s7am2bfnc00",
+  "parentID": "mig_cptrdcqm2s7am2bfnbrg",
+  "checksum": "1:55dd4f76f38f76959ac9f3cbd9a06ab62b22607669ca3fa6da45049afeef674d",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "Usermail",
+        "table": "Userdata"
+      }
+    }
+  ]
+}

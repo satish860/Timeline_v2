@@ -1,0 +1,16 @@
+{
+  "id": "mig_cs2bqpq2go8te7ad4e5g",
+  "parentID": "mig_cs2bqmt4rshpd1p6curg",
+  "checksum": "1:6ddf4e102129e2f41338a612420aa4ad4f78876cf9444d19845107947274dc0b",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Case_Notes_Url",
+          "type": "text"
+        },
+        "table": "timeline_files_data"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mig_cptqi59uin8uv19s7b1g",
+  "parentID": "mig_cptqi1am2s7am2bfnbg0",
+  "checksum": "1:f9f32d1d9f90f74ae4339d091a07a7e74c4efaa245d539d462f47a591c1dc692",
+  "operations": [
+    {
+      "renameColumn": {
+        "newName": "md_url",
+        "oldName": "md",
+        "table": "fileData"
+      }
+    }
+  ]
+}

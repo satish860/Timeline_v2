@@ -1,0 +1,16 @@
+{
+  "id": "mig_cpt8tiauarimh2ip01hg",
+  "parentID": "mig_cpt8tdh6jqn7barehd2g",
+  "checksum": "1:7a97cfa15ecd502b3d85158b6bbde6885fd77653adc644e7482a3603e2ff1d4f",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "wordFile",
+          "type": "file[]"
+        },
+        "table": "workspace"
+      }
+    }
+  ]
+}

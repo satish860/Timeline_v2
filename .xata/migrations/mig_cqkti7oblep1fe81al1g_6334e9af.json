@@ -1,0 +1,13 @@
+{
+  "id": "mig_cqkti7oblep1fe81al1g",
+  "parentID": "mig_cqkti35p1ukl0l219trg",
+  "checksum": "1:6334e9af57cc83353926546b123e2ecc402b06b7151f6e2c593447f983dea72f",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "genai_uri",
+        "table": "workspace"
+      }
+    }
+  ]
+}

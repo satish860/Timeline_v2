@@ -1,0 +1,16 @@
+{
+  "id": "mig_cs2bqmt4rshpd1p6curg",
+  "parentID": "mig_cs1sppt4rshpd1p6co1g",
+  "checksum": "1:679ff4b83c5a4adec649b60f98fff769acafeee590a02af2df0d98be3f081aa5",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Timeline_url",
+          "type": "text"
+        },
+        "table": "timeline_files_data"
+      }
+    }
+  ]
+}

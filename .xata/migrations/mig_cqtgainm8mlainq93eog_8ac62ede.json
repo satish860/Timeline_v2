@@ -1,0 +1,16 @@
+{
+  "id": "mig_cqtgainm8mlainq93eog",
+  "parentID": "mig_cqqo4thjf1qjn0fvtjj0",
+  "checksum": "1:8ac62ede6bfcdee5b70938ed5fad366fecebda7047aa948a0121f6f4e7ab9dd3",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Timeline_pdf",
+          "type": "text"
+        },
+        "table": "workspace"
+      }
+    }
+  ]
+}

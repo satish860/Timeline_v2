@@ -1,0 +1,16 @@
+{
+  "id": "mig_cqcb1kn2b91h0qbgj2og",
+  "parentID": "mig_cq7ok42rssmo4ehf90pg",
+  "checksum": "1:067e4771fd70930f04449bfb232c7d06db5a2305b162acad8d3b1fea85f464bd",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "is_ocr_need",
+          "type": "bool"
+        },
+        "table": "fileData"
+      }
+    }
+  ]
+}

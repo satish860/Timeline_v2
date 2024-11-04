@@ -1,0 +1,16 @@
+{
+  "id": "mig_cr6sho4n2urj4brhtrdg",
+  "parentID": "mig_cr6shkatghn0j3o3f0b0",
+  "checksum": "1:175e59ed3b0d5200113b17dfa075029cc7267158b23c54bc0bd292631c5e034f",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Practice",
+          "type": "text"
+        },
+        "table": "Kyc"
+      }
+    }
+  ]
+}
