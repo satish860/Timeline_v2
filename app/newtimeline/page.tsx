@@ -112,6 +112,7 @@ const Page: React.FC = () => {
                     <FileUpload 
                         onNext={handleFileUploadNext}
                         onBack={() => setCurrentStep(currentStep - 1)}
+                        recId={timelineData.recId}
                     />
                 )}
                 {currentStep === 3 && (

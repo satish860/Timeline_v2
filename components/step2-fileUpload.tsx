@@ -17,6 +17,7 @@ import axios from 'axios';
 interface StepProps {
     onNext: (files: File[], fileIds: string[], fileUrls: string[]) => void;
     onBack?: () => void;
+    recId?: string;
 }
 
 type FileProgressStatus = "pending" | "uploading" | "uploaded" | "error";
@@ -33,7 +34,7 @@ interface FileProgressMap {
   [filename: string]: FileProgress;
 }
 
-const FileUpload: React.FC<StepProps> = ({ onNext, onBack }) => {
+const FileUpload: React.FC<StepProps> = ({ onNext, onBack, recId }) => {
     const { edgestore } = useEdgeStore();
     const [files, setFiles] = useState<File[]>([]);
     const [error, setError] = useState<string | null>(null);
@@ -101,6 +102,7 @@ const FileUpload: React.FC<StepProps> = ({ onNext, onBack }) => {
                             const createFileResponse = await axios.post("/api/createTimelineFile", {
                                 fileUrl: result.url,
                                 filename: file.name,
+                                recId:recId,
                             });
 
                             console.log(createFileResponse.data.fileId);
