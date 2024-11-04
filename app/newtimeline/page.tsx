@@ -13,26 +13,36 @@ export default function Page() {
         <div className=" flex items-center justify-center min-h-80">
             <Card className="w-full max-w-3xl mx-auto">
                 <CardHeader>
-                    <div className="flex items-center justify-between mb-6 relative">
-                        <div className="flex items-center gap-1 z-10">
-                            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 text-black font-bold">
-                                1
+                    <div className="flex items-center justify-center mb-6">
+                        {/* Step 1 with line */}
+                        <div className="flex items-center">
+                            <div className="flex items-center gap-3">
+                                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground font-medium shadow-sm">
+                                    1
+                                </div>
+                                <span className="font-medium text-foreground pr-4">Timeline Details</span>
                             </div>
-                            <span className=" font-bold text-black">Timeline Details</span>
+                            <div className="h-[2px] bg-border w-[100px]"></div>
                         </div>
-                        <div className="flex items-center gap-1 z-10">
-                            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 text-gray-400 font-medium">
-                                2
+
+                        {/* Step 2 with line */}
+                        <div className="flex items-center">
+                            <div className="flex items-center gap-3">
+                                <div className="flex items-center justify-center w-8 h-8 rounded-full border bg-background text-muted-foreground font-medium shadow-sm">
+                                    2
+                                </div>
+                                <span className="text-muted-foreground pr-4">Upload Files</span>
                             </div>
-                            <span className="text-gray-400">Upload Files</span>
+                            <div className="h-[2px] bg-border w-[100px]"></div>
                         </div>
-                        <div className="flex items-center gap-1 z-10">
-                            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 text-gray-400 font-medium">
+
+                        {/* Step 3 - no line after */}
+                        <div className="flex items-center gap-3">
+                            <div className="flex items-center justify-center w-8 h-8 rounded-full border bg-background text-muted-foreground font-medium shadow-sm">
                                 3
                             </div>
-                            <span className="text-gray-400">Review & Submit</span>
+                            <span className="text-muted-foreground">Review & Submit</span>
                         </div>
-                        <div className="absolute top-1/2 left-0 w-full h-px bg-gray-200 -translate-y-1/2"></div>
                     </div>
                 </CardHeader>
                 <CardContent className="space-y-6">
