@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import {
-    CardContent
+    CardContent, Card
 } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Input } from '@/components/ui/input';
@@ -48,52 +48,55 @@ const TimelineDetails: React.FC<StepProps> = ({ onNext }) => {
     };
 
     return (
-        <CardContent className="space-y-6">
-            <div className="space-y-2">
-                <label htmlFor="case-name" className="font-semibold">
-                    Enter the case name
-                </label>
-                <Input
-                    id="case-name"
-                    value={caseName}
-                    onChange={(e) => setCaseName(e.target.value)}
-                    placeholder="Case name"
-                    className="w-full"
-                />
-            </div>
-            <div className="space-y-2">
-                <label htmlFor="area-of-law" className="font-semibold">
-                    Area of Law
-                </label>
-                <Select>
-                    <SelectTrigger id="area-of-law">
-                        <SelectValue placeholder="Please select an option" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="criminal">Criminal Law</SelectItem>
-                        <SelectItem value="civil">Civil Law</SelectItem>
-                        <SelectItem value="corporate">Corporate Law</SelectItem>
-                        <SelectItem value="family">Family Law</SelectItem>
-                        <SelectItem value="intellectual-property">Intellectual Property</SelectItem>
-                    </SelectContent>
-                </Select>
-            </div>
-            <div className="flex justify-end pt-4">
-            <Button 
-                    onClick={handleSubmit}
-                    disabled={isLoading || caseName.trim() === ""}
-                >
-                    {isLoading ? (
-                        <>
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            Saving...
-                        </>
-                    ) : (
-                        'Next'
-                    )}
-                </Button>
-            </div>
-        </CardContent>
+        <div className="flex items-center justify-center p-4">
+            <CardContent className="w-full max-w-xl space-y-6">
+                <div className="space-y-2">
+                    <label htmlFor="case-name" className="font-semibold">
+                        Enter the case name
+                    </label>
+                    <Input
+                        id="case-name"
+                        value={caseName}
+                        onChange={(e) => setCaseName(e.target.value)}
+                        placeholder="Case name"
+                        className="w-full"
+                    />
+                </div>
+                <div className="space-y-2">
+                    <label htmlFor="area-of-law" className="font-semibold">
+                        Area of Law
+                    </label>
+                    <Select>
+                        <SelectTrigger id="area-of-law">
+                            <SelectValue placeholder="Please select an option" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="criminal">Criminal Law</SelectItem>
+                            <SelectItem value="civil">Civil Law</SelectItem>
+                            <SelectItem value="corporate">Corporate Law</SelectItem>
+                            <SelectItem value="family">Family Law</SelectItem>
+                            <SelectItem value="intellectual-property">Intellectual Property</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
+                <div className="flex justify-end pt-4">
+                <Button 
+                        onClick={handleSubmit}
+                        disabled={isLoading || caseName.trim() === ""}
+                        className="px-20 py-3"
+                    >
+                        {isLoading ? (
+                            <>
+                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                Saving...
+                            </>
+                        ) : (
+                            'Next'
+                        )}
+                    </Button>
+                </div>
+            </CardContent>
+        </div>
     );
 };
 
