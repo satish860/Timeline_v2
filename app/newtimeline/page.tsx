@@ -52,7 +52,7 @@ const Page: React.FC = () => {
             }
 
             const responseData = await response.json();
-            setTimelineData(prev => ({ ...prev, recId: responseData.recId }));
+            setTimelineData(prev => ({ ...prev,  recId: responseData.recId }));
             return responseData.recId;
         } catch (error) {
             console.error('Error creating case:', error);
