@@ -8,6 +8,7 @@ export async function POST(req: NextRequest) {
   try {
     const request = await req.json();
     const name = request.caseName;
+    const user_id = request.user_id;
 
     if (!request.caseName) {
       return NextResponse.json(
@@ -18,6 +19,7 @@ export async function POST(req: NextRequest) {
 
     const record = await xata.db.timeline_Job_Queue.create({
       CaseName: name,
+      user_id: user_id,
       Status: "Pending",
     });
 

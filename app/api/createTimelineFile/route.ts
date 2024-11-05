@@ -10,13 +10,15 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const file_name = body.filename;
     const file_url = body.fileUrl;
-    const workspace_id = body.recId
-    
+    const workspace_id = body.recId;
 
     const record = await xata.db.timeline_files_data.create({
       file_url: file_url,
       file_name: file_name,
-      workspace_id: workspace_id
+      Status: "Pending",
+      workspace: {
+        id: workspace_id,
+      },
     });
 
     return NextResponse.json({ fileId: record.id }, { status: 201 });
