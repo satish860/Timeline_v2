@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/accordion";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 interface ProgressComponentProps {
   caseid: string;
@@ -50,6 +51,7 @@ const ProgressComponent = ({ caseid, name }: ProgressComponentProps) => {
   const [workspaceStatus, setWorkspaceStatus] =
     useState<WorkspaceStatus | null>(null);
   const [progress, setProgress] = useState<number>(0);
+  const router = useRouter();
 
   const calculateProgress = (
     files: FileStatus[],
@@ -93,6 +95,9 @@ const ProgressComponent = ({ caseid, name }: ProgressComponentProps) => {
         response.data.workspace_status
       )
     );
+    if (response.data.workspace_status.status === "Completed") {
+      router.push(`/casetimeline/${caseid}`);
+    }
   };
 
   useEffect(() => {

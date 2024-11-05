@@ -3,31 +3,36 @@ import PdfViewer from "./PdfViewer";
 import { DataTable } from "./Table/data-table";
 import { columns } from "@/components/TimelineTable/columns";
 import { useState, useEffect } from "react";
-import { TimelineEvent } from "@/src/types";
+import { TimelineEvent, FileUrls } from "@/src/types";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface TableComponentProps {
   data: TimelineEvent[];
-  pdfUrl: string;
+  pdfUrls: FileUrls;
 }
 
-const TimelineTable: React.FC<TableComponentProps> = ({ data, pdfUrl }) => {
+const TimelineTable: React.FC<TableComponentProps> = ({ data, pdfUrls }) => {
   const [showPdf, setShowPdf] = useState(false);
   const [initialPage, setInitialPage] = useState<number>(1);
+  const [currentPdfUrl, setCurrentPdfUrl] = useState<string>("");
 
   useEffect(() => {
     const handleShowPdf = (
-      event: CustomEvent<{ url: string; page: number }>
+      event: CustomEvent<{ fileName: string; page: number }>
     ) => {
-      setShowPdf(true);
-      setInitialPage(event.detail.page);
+      const pdfUrl = pdfUrls[event.detail.fileName];
+      if (pdfUrl) {
+        setCurrentPdfUrl(pdfUrl);
+        setInitialPage(event.detail.page);
+        setShowPdf(true);
+      }
     };
     window.addEventListener("showPdf", handleShowPdf as EventListener);
     return () => {
       window.removeEventListener("showPdf", handleShowPdf as EventListener);
     };
-  }, []);
+  }, [pdfUrls]);
 
   return (
     <div className="flex gap-6 h-[calc(90vh-4rem)]">
@@ -54,7 +59,7 @@ const TimelineTable: React.FC<TableComponentProps> = ({ data, pdfUrl }) => {
             </Button>
           </div>
           <div className="p-4">
-            <PdfViewer pdfUrl={pdfUrl} initialPage={initialPage} />
+            <PdfViewer pdfUrl={currentPdfUrl} initialPage={initialPage} />
           </div>
         </div>
       )}

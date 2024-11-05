@@ -13,3 +13,7 @@ export interface TimelineEvent {
   event: string;
   sources: Source[];
 }
+
+export interface FileUrls {
+  [fileName: string]: string;
+}

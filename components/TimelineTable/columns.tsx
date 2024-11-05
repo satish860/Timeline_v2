@@ -81,7 +81,7 @@ export const columns: ColumnDef<TimelineEvent>[] = [
                     window.dispatchEvent(
                       new CustomEvent("showPdf", {
                         detail: {
-                          url: source.file_name,
+                          fileName: source.file_name,
                           page: pageNum,
                         },
                       })
