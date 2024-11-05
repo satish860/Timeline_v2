@@ -6,6 +6,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { FileText } from 'lucide-react';
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useRouter } from 'next/navigation';
 
 interface StepProps {
     onNext: () => void;
@@ -32,8 +33,16 @@ const Review: React.FC<ReviewProps> = ({
     timelineData,
     uploadedFiles
 }) => {
+    const router = useRouter();
+
     const handleSubmit = () => {
         console.log('Form submitted');
+        try {
+            const timelineId = timelineData.recId || "";
+            router.push(`/timelineprogress/${timelineId}`);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
     };
 
     const formatAreaOfLaw = (area: string) => {
@@ -84,11 +93,11 @@ const Review: React.FC<ReviewProps> = ({
                 </div>
             </div>
 
-            <div className="flex justify-between pt-4">
-                <Button variant="outline" onClick={onBack}>
+            <div className="flex justify-end space-x-1">
+                <Button variant="outline" onClick={onBack} className="px-20 py-3">
                     Back
                 </Button>
-                <Button onClick={handleSubmit}>
+                <Button onClick={handleSubmit} className="px-20 py-3">
                     Submit
                 </Button>
             </div>
