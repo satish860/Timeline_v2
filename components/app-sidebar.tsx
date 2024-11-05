@@ -25,7 +25,6 @@ import {
 } from "@/components/ui/sidebar";
 
 import { UserButton } from "@stackframe/stack";
-// Example data
 const data = {
   navMain: [
     {
