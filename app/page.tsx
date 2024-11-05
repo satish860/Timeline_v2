@@ -50,35 +50,10 @@ export default async function Home() {
 
   const cases = await fetchCases(user_id);
 
-  const fallbackData: Case[] = [
-    {
-      id: "1",
-      caseTitle: "Case 1",
-      status: "in progress",
-      priority: "medium",
-      label: "Case 1",
-      shareList: ["Satish", "Rajesh"],
-    },
-    {
-      id: "2",
-      caseTitle: "Case 2",
-      status: "in progress",
-      priority: "medium",
-      label: "Case 2",
-      shareList: ["Satish", "Rajesh"],
-    },
-    {
-      id: "3",
-      caseTitle: "Case 3",
-      status: "in progress",
-      priority: "medium",
-      label: "Case 3",
-      shareList: ["Satish", "Rajesh"],
-    },
-  ];
+  
 
   console.log("cases", cases);
-  const data = cases.length > 0 ? cases : fallbackData;
+  const data = cases;
 
   return (
     <div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">

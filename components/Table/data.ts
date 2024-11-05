@@ -50,6 +50,16 @@ import {
       label: "Canceled",
       icon: CrossCircledIcon,
     },
+    {
+      value: "pending",
+      label: "Pending",
+      icon: StopwatchIcon,
+    },
+    {
+      value: "completed",
+      label: "Completed",
+      icon: CheckCircledIcon,
+    }
   ]
   
   export const priorities = [

@@ -24,6 +24,9 @@ import {
 } from "@/components/ui/table";
 import { DataTablePagination } from "./data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
+import { ChartGantt } from "lucide-react";
+import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -45,6 +48,7 @@ export function DataTable<TData, TValue>({
     []
   );
   const [sorting, setSorting] = React.useState<SortingState>([]);
+  const router = useRouter();
 
   const table = useReactTable({
     data,
@@ -68,9 +72,17 @@ export function DataTable<TData, TValue>({
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
 
+  function handleClick(): void {
+    router.push("/newtimeline");
+  }
+
   return (
     <div className="flex h-full flex-col space-y-4">
-      <DataTableToolbar table={table} placeholder={placeholder} columnName={columnName}  />
+      <DataTableToolbar
+        table={table}
+        placeholder={placeholder}
+        columnName={columnName}
+      />
       <div className="flex-1 overflow-hidden rounded-md border">
         <div className="h-full overflow-auto custom-scrollbar">
           <Table>
@@ -115,7 +127,16 @@ export function DataTable<TData, TValue>({
                     colSpan={columns.length}
                     className="h-24 text-center"
                   >
-                    No results.
+                    <h1 className="text-2xl font-bold text-gray-600 mb-4">
+                      Start Your Case Timeline Journey
+                    </h1>
+                    <p className="text-gray-500 mb-6">
+                      Create a new timeline to organize and visualize your case
+                      events
+                    </p>
+                    <Button onClick={handleClick} className="mt-2">
+                      <ChartGantt className="mr-2" /> New Timeline
+                    </Button>
                   </TableCell>
                 </TableRow>
               )}
