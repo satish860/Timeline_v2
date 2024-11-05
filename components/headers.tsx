@@ -17,7 +17,7 @@ import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 export default function Component() {
   return (
     <header className="border-b">
-      <div className="container flex h-16 items-center justify-between px-4">
+      <div className="container flex h-16 items-center justify-between px-8">
         <div className="flex items-center gap-2">
           <Boxes className="h-10 w-10" />
           <span className="text-2xl font-bold">Timeline</span>

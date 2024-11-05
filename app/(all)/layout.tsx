@@ -1,5 +1,6 @@
-import Header from "@/components/headers";
-import localFont  from "next/font/local";
+import localFont from "next/font/local";
+import { Navbar } from "@/components/navbar";
+import { ThemeProvider } from "@/components/theme-proivder";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -21,8 +22,15 @@ export default function LandingLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Header />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
