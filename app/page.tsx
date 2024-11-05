@@ -1,9 +1,9 @@
 import { columns } from "@/components/Table/columns";
-import { DataTable } from "@/components/Table/data-table";
 import { Case, CaseSchema, statusEnum } from "@/components/Table/Schema";
 import { stackServerApp } from "@/stack";
 import { getXataClient } from "@/src/xata";
 import { z } from "zod"
+import CaseDataTable from "@/app/CaseDataTable";
 
 const fetchCases = async (user_id: string): Promise<Case[]> => {
   const xata = getXataClient();
@@ -89,12 +89,7 @@ export default async function Home() {
         <div className="flex items-center space-x-2">{/* <UserNav /> */}</div>
       </div>
       <div className="flex-1 overflow-hidden">
-        <DataTable
-          data={data}
-          columns={columns}
-          placeholder="Filter by case..."
-          columnName="caseTitle"
-        />
+        <CaseDataTable data={data} />
       </div>
     </div>
   );
