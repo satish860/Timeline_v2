@@ -33,10 +33,6 @@ const Page: React.FC = () => {
     setCurrentStep((prev) => Math.min(prev + 1, 3));
   };
 
-  const handleBack = () => {
-    setCurrentStep((prev) => Math.max(prev - 1, 1));
-  };
-
   const handleCreateCase = async (data: {
     caseName: string;
     areaOfLaw: string;

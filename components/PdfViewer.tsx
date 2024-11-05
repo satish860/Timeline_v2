@@ -32,7 +32,7 @@ export const PdfViewer: React.FC<PDFProps> = ({ pdfUrl, initialPage = 1 }) => {
 
   useEffect(() => {
     jumpToPage(initialPage - 1);
-  }, [initialPage]);
+  }, [initialPage, jumpToPage]);
 
   if (!pdfUrl) {
     return <div className="error-message">No PDF URL provided</div>;

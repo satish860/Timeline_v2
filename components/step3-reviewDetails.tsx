@@ -66,7 +66,7 @@ const Review: React.FC<ReviewProps> = ({
                 <div className="space-y-4 border rounded-lg p-4">
                     <h4 className="font-medium">Uploaded Files ({uploadedFiles.length})</h4>
                     <ScrollArea className="h-[200px] w-full rounded-md border">
-                        {uploadedFiles.map((fileData, index) => (
+                        {uploadedFiles.map((fileData) => (
                             <div 
                                 key={fileData.fileId} 
                                 className="flex items-center space-x-3 p-3 hover:bg-gray-50"

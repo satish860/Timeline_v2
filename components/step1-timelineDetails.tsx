@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { CardContent, Card } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -14,7 +14,6 @@ import { Loader2 } from "lucide-react";
 
 interface StepProps {
   onNext: () => void;
-  onBack?: () => void;
 }
 
 interface TimelineDetailsProps extends StepProps {
@@ -36,7 +35,6 @@ interface TimelineDetailsProps extends StepProps {
 
 const TimelineDetails: React.FC<TimelineDetailsProps> = ({
   onNext,
-  onBack,
   timelineData,
   setTimelineData,
   onCreateCase,

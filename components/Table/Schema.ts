@@ -2,6 +2,8 @@ import { z } from "zod"
 
 // Define the valid status and priority values
 export const statusEnum = z.enum([
+  "pending",
+  "completed",
   "backlog",
   "todo",
   "in progress",

@@ -1,14 +1,56 @@
-"use client";
 import { columns } from "@/components/Table/columns";
 import { DataTable } from "@/components/Table/data-table";
-import { Case } from "@/components/Table/Schema";
-import { useUser } from "@stackframe/stack";
+import { Case, CaseSchema, statusEnum } from "@/components/Table/Schema";
+import { stackServerApp } from "@/stack";
+import { getXataClient } from "@/src/xata";
+import { z } from "zod"
 
-export default function Home() {
-  const user = useUser({ or: "redirect" });
-  console.log(user.id);
+const fetchCases = async (user_id: string): Promise<Case[]> => {
+  const xata = getXataClient();
 
-  const data: Case[] = [
+  try {
+    const records = await xata.db.timeline_Job_Queue
+      .select([
+        "id",
+        "CaseName",
+        "Status",
+        "user_id"
+      ])
+      .filter({ "user_id": user_id })
+      .getAll();
+
+    const casesData = records.map((record): Case => {
+      type StatusType = z.infer<typeof statusEnum>;
+      const status = record.Status?.toLowerCase() as StatusType ?? "pending"; 
+      return {
+        id: record.id ?? "",
+        caseTitle: record.CaseName ?? "Untitled Case",
+        status: status,
+        priority: "medium",
+        label: record.CaseName ?? "Untitled Case",
+        shareList: [],
+      };
+    });
+
+    const validCases = casesData.filter(caseData => {
+      const result = CaseSchema.safeParse(caseData);
+      return result.success;
+    });
+
+    return validCases;
+  } catch (error) {
+    console.error("Error fetching cases:", error);
+    return [];
+  }
+};
+
+export default async function Home() {
+  const user = await stackServerApp.getUser({ or: 'redirect' });
+  const user_id = user.id;
+
+  const cases = await fetchCases(user_id);
+
+  const fallbackData: Case[] = [
     {
       id: "1",
       caseTitle: "Case 1",
@@ -34,6 +76,9 @@ export default function Home() {
       shareList: ["Satish", "Rajesh"],
     },
   ];
+
+  console.log("cases", cases);
+  const data = cases.length > 0 ? cases : fallbackData;
 
   return (
     <div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
