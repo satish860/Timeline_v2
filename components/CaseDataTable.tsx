@@ -8,19 +8,20 @@ interface CaseDataTableProps {
   data: Case[];
 }
 
-const handleRowSelectionChange = 
-    (data: Case) => {
-        console.log(data);
-        const router = useRouter();
-        const id = data.id;
-        if (data.status?.toLowerCase() === 'completed') {
-            router.push(`/casetimeline/${id}`);
-        } else if (data.status?.toLowerCase() === 'pending') {
-            router.push(`/timelineprogress/${id}`);
-        }
-    }
-
 const CaseDataTable: React.FC<CaseDataTableProps> = ({ data }) => {
+  const router = useRouter();
+
+  const handleRowSelectionChange = 
+  (data: Case) => {
+      console.log(data);
+      const id = data.id;
+      if (data.status?.toLowerCase() === 'completed') {
+          router.push(`/casetimeline/${id}`);
+      } else if (data.status?.toLowerCase() === 'pending') {
+          router.push(`/timelineprogress/${id}`);
+      }
+  }
+  
   return (
     <DataTable
       data={data}

@@ -1,9 +1,8 @@
-import { columns } from "@/components/Table/columns";
 import { Case, CaseSchema, statusEnum } from "@/components/Table/Schema";
 import { stackServerApp } from "@/stack";
 import { getXataClient } from "@/src/xata";
 import { z } from "zod"
-import CaseDataTable from "@/app/CaseDataTable";
+import CaseDataTable from "@/components/CaseDataTable";
 
 const fetchCases = async (user_id: string): Promise<Case[]> => {
   const xata = getXataClient();
