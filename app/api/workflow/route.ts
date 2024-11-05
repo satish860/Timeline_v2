@@ -80,13 +80,10 @@ export const { POST } = serve<InitialPayload>(async (context) => {
     records[0].Status === "Timeline Created"
   ) {
     console.log("Single record case");
-    await xata.db.timeline_Job_Queue.update(
-      payload.workspace_id,
-      {
-        Timeline_url: records[0].Timeline_url,
-        Status: "Completed",
-      }
-    );
+    await xata.db.timeline_Job_Queue.update(payload.workspace_id, {
+      Timeline_url: records[0].Timeline_url,
+      Status: "Completed",
+    });
     console.log("Timeline URL updated");
   } else if (
     records.length > 1 &&
@@ -95,9 +92,7 @@ export const { POST } = serve<InitialPayload>(async (context) => {
     )
   ) {
     console.log("Length of records: ", records.length);
-    console.log(
-      "Multiple records with Timeline_url present and Timeline Created status"
-    );
+    console.log("Multiple records with Timeline_url present.");
 
     const combineClient = await auth.getIdTokenClient(combine_url);
     const combineToken = await combineClient.idTokenProvider.fetchIdToken(

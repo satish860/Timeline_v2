@@ -1,11 +1,24 @@
-export default function TimelineProgress({
+import ProgressComponent from "@/components/ProgressComponent";
+import { getXataClient } from "@/src/xata";
+
+const xata = getXataClient();
+
+async function getCaseData(id: string) {
+  const record = await xata.db.timeline_Job_Queue.read(id);
+  if (!record || typeof record.CaseName !== "string") {
+    throw new Error("Case not found");
+  }
+  return {
+    name: record.CaseName,
+  };
+}
+
+export default async function TimelineProgress({
   params,
 }: {
   params: { id: string };
 }) {
-  return (
-    <div>
-      <h1>Hello World - Timeline {params.id}</h1>
-    </div>
-  );
+  const { name } = await getCaseData(params.id);
+
+  return <ProgressComponent caseid={params.id} name={name} />;
 }
