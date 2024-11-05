@@ -28,6 +28,8 @@ import { DataTableToolbar } from "./data-table-toolbar";
 import { ChartGantt } from "lucide-react";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -118,9 +120,18 @@ export function DataTable<TData, TValue>({
                   >
                     {row.getVisibleCells().map((cell) => (
                       <TableCell key={cell.id}>
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
+                        {typeof cell.getValue() === "string" ? (
+                          <ReactMarkdown
+                            className="markdown"
+                            remarkPlugins={[remarkGfm]}
+                          >
+                            {cell.getValue() as string}
+                          </ReactMarkdown>
+                        ) : (
+                          flexRender(
+                            cell.column.columnDef.cell,
+                            cell.getContext()
+                          )
                         )}
                       </TableCell>
                     ))}

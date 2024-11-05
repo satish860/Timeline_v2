@@ -97,3 +97,97 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+.markdown ul,
+.markdown ol {
+  @apply pl-2 text-base;
+}
+
+.markdown ul {
+  list-style-type: disc;
+}
+
+.markdown ol {
+  list-style-type: decimal;
+}
+
+.markdown ul li,
+.markdown ol li {
+  @apply mb-2;
+}
+
+.markdown ul li:last-child,
+.markdown ol li:last-child {
+  @apply mb-2;
+}
+
+.markdown h1 {
+  @apply text-xl md:text-xl font-semibold my-4;
+}
+
+.markdown h2 {
+  @apply text-lg md:text-xl font-semibold my-3;
+}
+
+.markdown h3 {
+  @apply text-base md:text-xl font-medium my-2;
+}
+
+.markdown h4 {
+  @apply text-base md:text-lg  my-2;
+}
+
+.markdown p {
+  @apply text-sm md:text-base text-justify leading-relaxed;
+}
+
+.markdown {
+  @apply break-words;
+}
+
+/* Markdown Table Styles */
+.markdown table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.markdown th,
+.markdown td {
+  border: 1px solid #e2e8f0;
+  padding: 0.5rem 1rem;
+  text-align: left;
+}
+
+.markdown th {
+  background-color: #f7fafc;
+  font-weight: bold;
+}
+
+.markdown tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.markdown tr:hover {
+  background-color: #edf2f7;
+}
+
+.markdown td {
+  white-space: normal;
+  word-wrap: break-word;
+  max-width: 300px; /* Adjust as needed */
+}
+
+/* Ensure the table is responsive */
+@media screen and (max-width: 600px) {
+  .markdown table {
+    font-size: 0.8rem;
+  }
+  
+  .markdown th,
+  .markdown td {
+    padding: 0.3rem 0.5rem;
+  }
+}
