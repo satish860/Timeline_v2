@@ -5,7 +5,6 @@ import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import "@react-pdf-viewer/search/lib/styles/index.css";
 import { ThemeProvider } from "@/components/theme-proivder";
-import { Navbar } from "@/components/navbar";
 import { StackProvider, StackTheme } from "@stackframe/stack";
 import { stackServerApp } from "../stack";
 
@@ -75,7 +74,6 @@ export default async function RootLayout({
         >
           <StackProvider app={stackServerApp}>
             <StackTheme>
-              <Navbar />
               {children}
             </StackTheme>
           </StackProvider>
