@@ -13,6 +13,8 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
+  RowSelectionState,
+  OnChangeFn,
 } from "@tanstack/react-table";
 import {
   Table,
@@ -33,15 +35,17 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
   placeholder?: string;
   columnName: string;
+  onRowSelectionChange?: (selectedRows: TData[]) => void;
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable<TData extends { caseTitle?: string; status?: string; fileCount?: number; id?: string }, TValue>({
   columns,
   data,
   placeholder,
   columnName,
+  onRowSelectionChange,
 }: DataTableProps<TData, TValue>) {
-  const [rowSelection, setRowSelection] = React.useState({});
+  const [rowSelection, setRowSelection] = React.useState<RowSelectionState>({});
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -49,6 +53,61 @@ export function DataTable<TData, TValue>({
   );
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const router = useRouter();
+
+  const handleRowSelectionChange: OnChangeFn<RowSelectionState> = React.useCallback(
+    (updaterOrValue) => {
+      const newSelection = 
+        typeof updaterOrValue === 'function' 
+          ? updaterOrValue(rowSelection)
+          : updaterOrValue;
+
+      setRowSelection(newSelection);
+
+      if (onRowSelectionChange) {
+        const selectedRows = Object.entries(newSelection)
+          .filter(([, isSelected]) => isSelected)
+          .map(([index]) => data[parseInt(index)])
+          .filter((row): row is TData => row !== undefined);
+
+        selectedRows.forEach(row => {
+          console.log({
+            caseId: row.id,
+            caseTitle: row.caseTitle,
+            status: row.status,
+            fileCount: row.fileCount,
+          });
+        });
+        
+        onRowSelectionChange(selectedRows);
+      }
+    },
+    [data, onRowSelectionChange, rowSelection]
+  );
+
+  const handleRowClick = React.useCallback(
+    (index: number) => {
+      const clickedRow = data[index];
+      console.log('Selected Row Details:', {
+        caseId: clickedRow.id,
+        caseTitle: clickedRow.caseTitle,
+        status: clickedRow.status,
+        fileCount: clickedRow.fileCount
+      });
+      
+      const id = clickedRow.id;
+      console.log("id=",id);
+      if (clickedRow.status?.toLowerCase() === 'completed') {
+        router.push(`/casetimeline/${id}`);
+      } else if (clickedRow.status?.toLowerCase() === 'pending') {
+        router.push(`/timelineprogress/${id}`);
+      }
+
+      const newSelection = { ...rowSelection };
+      newSelection[index] = !newSelection[index];
+      handleRowSelectionChange(newSelection);
+    },
+    [data, rowSelection, handleRowSelectionChange]
+  );
 
   const table = useReactTable({
     data,
@@ -60,7 +119,7 @@ export function DataTable<TData, TValue>({
       columnFilters,
     },
     enableRowSelection: true,
-    onRowSelectionChange: setRowSelection,
+    onRowSelectionChange: handleRowSelectionChange,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
@@ -110,6 +169,8 @@ export function DataTable<TData, TValue>({
                   <TableRow
                     key={row.id}
                     data-state={row.getIsSelected() && "selected"}
+                    className="cursor-pointer"
+                    onClick={() => handleRowClick(row.index)}
                   >
                     {row.getVisibleCells().map((cell) => (
                       <TableCell key={cell.id}>
