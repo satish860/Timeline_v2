@@ -19,20 +19,40 @@ const fetchCases = async (user_id: string): Promise<Case[]> => {
       .filter({ "user_id": user_id })
       .getAll();
 
-    const casesData = records.map((record): Case => {
-      type StatusType = z.infer<typeof statusEnum>;
-      const status = record.Status?.toLowerCase() as StatusType ?? "pending"; 
-      return {
-        id: record.id ?? "",
-        caseTitle: record.CaseName ?? "Untitled Case",
-        status: status,
-        priority: "medium",
-        label: record.CaseName ?? "Untitled Case",
-        shareList: [],
-      };
-    });
+      const casesWithFiles = await Promise.all(
+        records.map(async (record) => {
+          const workspaceId = record.id;
+          let fileCount = 0;
+  
+          if (workspaceId) {
+            try {
+              const files = await xata.db.timeline_files_data
+                .filter({ "workspace.id": workspaceId })
+                .getAll();
+              
+              fileCount = files.length;
+            } catch (error) {
+              console.error(`Error fetching files for workspace ${workspaceId}:`, error);
+            }
+          }
+  
+          type StatusType = z.infer<typeof statusEnum>;
+          const status = record.Status?.toLowerCase() as StatusType ?? "pending";
+  
+          const caseData: Case = {
+            id: record.id ?? "",
+            caseTitle: record.CaseName ?? "Untitled Case",
+            status: status,
+            label: record.CaseName ?? "Untitled Case",
+            shareList: [],
+            fileCount: fileCount
+          };
+  
+          return caseData;
+        })
+      );
 
-    const validCases = casesData.filter(caseData => {
+    const validCases = casesWithFiles.filter(caseData => {
       const result = CaseSchema.safeParse(caseData);
       return result.success;
     });

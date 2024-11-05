@@ -4,8 +4,8 @@ import { ColumnDef } from "@tanstack/react-table"
 
 import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
-
-import { labels, priorities, statuses } from "./data"
+import { FileIcon } from "lucide-react"
+import { labels, statuses } from "./data"
 import { Case } from "./Schema"
 import { DataTableColumnHeader } from "./data-table-column-header"
     // import { DataTableRowActions } from "./data-table-row-actions"  
@@ -90,30 +90,20 @@ export const columns: ColumnDef<Case>[] = [
     },
   },
   {
-    accessorKey: "priority",
+    accessorKey: "fileCount",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Priority" />
+      <DataTableColumnHeader column={column} title="Files" />
     ),
     cell: ({ row }) => {
-      const priority = priorities.find(
-        (priority) => priority.value === row.getValue("priority")
-      )
-
-      if (!priority) {
-        return null
-      }
+      const fileCount = row.getValue("fileCount") as number
 
       return (
-        <div className="flex items-center">
-          {priority.icon && (
-            <priority.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-          )}
-          <span>{priority.label}</span>
+        <div className="flex w-[80px] items-center">
+          <FileIcon className="mr-2 h-4 w-4 text-muted-foreground" />
+          <span>{fileCount}</span>
         </div>
       )
     },
-    filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id))
-    },
+    enableSorting: true,
   },
 ]

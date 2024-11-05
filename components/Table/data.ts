@@ -1,7 +1,4 @@
 import {
-    ArrowDownIcon,
-    ArrowRightIcon,
-    ArrowUpIcon,
     CheckCircledIcon,
     CircleIcon,
     CrossCircledIcon,
@@ -60,22 +57,4 @@ import {
       label: "Completed",
       icon: CheckCircledIcon,
     }
-  ]
-  
-  export const priorities = [
-    {
-      value: "low",
-      label: "Low",
-      icon: ArrowDownIcon,
-    },
-    {
-      value: "medium",
-      label: "Medium",
-      icon: ArrowRightIcon,
-    },
-    {
-      value: "high",
-      label: "High",
-      icon: ArrowUpIcon,
-    },
   ]
