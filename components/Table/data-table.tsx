@@ -36,6 +36,7 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
   placeholder?: string;
   columnName: string;
+  id?: string;
   onRowSelectionChange?: (selectedRows: TData) => void;
 }
 
@@ -44,6 +45,7 @@ export function DataTable<TData, TValue>({
   data,
   placeholder,
   columnName,
+  id,
   onRowSelectionChange,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState<RowSelectionState>({});
@@ -87,6 +89,7 @@ export function DataTable<TData, TValue>({
         table={table}
         placeholder={placeholder}
         columnName={columnName}
+        id={id}
       />
       <div className="flex-1 overflow-hidden rounded-md border">
         <div className="h-full overflow-auto custom-scrollbar">

@@ -6,19 +6,39 @@ import { Input } from "@/components/ui/input";
 import { DataTableViewOptions } from "./data-table-view-options";
 import { statuses } from "./data";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
+import { FileDown } from "lucide-react";
+import axios from "axios";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
   placeholder?: string;
   columnName: string;
+  id?: string;
 }
 
 export function DataTableToolbar<TData>({
   table,
   placeholder,
   columnName,
+  id,
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
+  const wordCreationUrl = process.env.NEXT_PUBLIC_WORD_CREATION_URL;
+
+  const handleDownloadWord = async () => {
+    console.log("Downloading word for id:", id);
+    const response = await axios
+      .get(`${wordCreationUrl}?workspace_id=${id}`)
+      .then((response) => {
+        if (response.data.doc_url) {
+          window.open(response.data.url, "_blank");
+        }
+      })
+      .catch((error) => {
+        console.error("Error downloading word document:", error);
+      });
+    console.log(response);
+  };
 
   return (
     <div className="flex items-center justify-between p-2">
@@ -26,7 +46,9 @@ export function DataTableToolbar<TData>({
         <Input
           placeholder={placeholder}
           type="text"
-          value={(table.getColumn(columnName)?.getFilterValue() as string) ?? ""}
+          value={
+            (table.getColumn(columnName)?.getFilterValue() as string) ?? ""
+          }
           onChange={(event) =>
             table.getColumn(columnName)?.setFilterValue(event.target.value)
           }
@@ -50,7 +72,15 @@ export function DataTableToolbar<TData>({
           </Button>
         )}
       </div>
-      {columnName !== "event" && <DataTableViewOptions table={table} />}
+      <div className="flex items-center gap-2">
+        {columnName === "event" && (
+          <Button variant="outline" size="sm" onClick={handleDownloadWord}>
+            <FileDown className="mr-2 h-4 w-4" />
+            Download Word
+          </Button>
+        )}
+        {columnName !== "event" && <DataTableViewOptions table={table} />}
+      </div>
     </div>
   );
 }

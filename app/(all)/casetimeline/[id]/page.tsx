@@ -41,5 +41,5 @@ async function getCaseTimeline(id: string) {
 export default async function Timeline({ params }: { params: { id: string } }) {
   const { events, pdfUrls } = await getCaseTimeline(params.id);
 
-  return <TimelineTable data={events} pdfUrls={pdfUrls} />;
+  return <TimelineTable data={events} pdfUrls={pdfUrls} id={params.id} />;
 }

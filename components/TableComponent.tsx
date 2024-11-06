@@ -10,9 +10,10 @@ import { Button } from "@/components/ui/button";
 interface TableComponentProps {
   data: TimelineEvent[];
   pdfUrls: FileUrls;
+  id: string;
 }
 
-const TimelineTable: React.FC<TableComponentProps> = ({ data, pdfUrls }) => {
+const TimelineTable: React.FC<TableComponentProps> = ({ data, pdfUrls, id }) => {
   const [showPdf, setShowPdf] = useState(false);
   const [initialPage, setInitialPage] = useState<number>(1);
   const [currentPdfUrl, setCurrentPdfUrl] = useState<string>("");
@@ -42,6 +43,7 @@ const TimelineTable: React.FC<TableComponentProps> = ({ data, pdfUrls }) => {
           data={data}
           placeholder="Filter by event..."
           columnName="event"
+          id={id}
         />
       </div>
       {showPdf && (
