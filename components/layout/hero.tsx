@@ -45,7 +45,7 @@ export const HeroSection = () => {
               variant="secondary"
               className="w-5/6 md:w-1/4 font-bold"
             >
-              <Link href="/dashboard" target="_blank">
+              <Link href="/handler/sign-in" target="_blank">
                 Try Now for Free
               </Link>
             </Button>
