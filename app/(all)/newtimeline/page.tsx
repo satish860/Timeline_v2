@@ -28,7 +28,6 @@ const Page: React.FC = () => {
   });
   const [uploadedFiles, setUploadedFiles] = useState<FileData[]>([]);
   const user = useUser({ or: "redirect" });
-  console.log(user.id);
 
   const handleNext = () => {
     setCurrentStep((prev) => Math.min(prev + 1, 3));
@@ -44,7 +43,12 @@ const Page: React.FC = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...data, user_id: user.id }),
+        body: JSON.stringify({
+          ...data,
+          user_id: user.id,
+          user_name: user.displayName,
+          user_email: user.primaryEmail,
+        }),
       });
 
       if (!response.ok) {
@@ -81,7 +85,7 @@ const Page: React.FC = () => {
           try {
             const data = await axios.post("/api/workflow", {
               id: fileId,
-              workspace_id: caseId
+              workspace_id: caseId,
             });
 
             console.log(`File ${fileId} workflow started:`, data);
@@ -93,18 +97,21 @@ const Page: React.FC = () => {
         })
       );
 
-      const failedFiles = fileResults.filter(result => !result.success);
+      const failedFiles = fileResults.filter((result) => !result.success);
       if (failedFiles.length > 0) {
-        console.error('Some files failed to process:', failedFiles);
+        console.error("Some files failed to process:", failedFiles);
       }
 
-      const successfulFiles = fileResults.filter(result => result.success);
-      console.log('Successfully processed files:', successfulFiles);
+      const successfulFiles = fileResults.filter((result) => result.success);
+      console.log("Successfully processed files:", successfulFiles);
 
       setCurrentStep(currentStep + 1);
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        console.error("Workflow API error:", error.response?.data || error.message);
+        console.error(
+          "Workflow API error:",
+          error.response?.data || error.message
+        );
         // You might want to show an error message to the user here
       } else {
         console.error("Unexpected error:", error);
@@ -113,7 +120,6 @@ const Page: React.FC = () => {
     }
   };
 
-
   return (
     <div className="flex items-center justify-center min-h-80">
       <Card className="w-full max-w-3xl mx-auto">
@@ -121,10 +127,11 @@ const Page: React.FC = () => {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-1 z-10">
               <div
-                className={`flex items-center justify-center w-8 h-8 rounded-full ${currentStep >= 1
+                className={`flex items-center justify-center w-8 h-8 rounded-full ${
+                  currentStep >= 1
                     ? "bg-primary text-primary-foreground"
                     : "bg-background text-muted-foreground border"
-                  } font-medium shadow-sm`}
+                } font-medium shadow-sm`}
               >
                 1
               </div>
@@ -142,10 +149,11 @@ const Page: React.FC = () => {
 
             <div className="flex items-center gap-1 z-10">
               <div
-                className={`flex items-center justify-center w-8 h-8 rounded-full ${currentStep >= 2
+                className={`flex items-center justify-center w-8 h-8 rounded-full ${
+                  currentStep >= 2
                     ? "bg-primary text-primary-foreground"
                     : "bg-background text-muted-foreground border"
-                  } font-medium shadow-sm`}
+                } font-medium shadow-sm`}
               >
                 2
               </div>
@@ -163,10 +171,11 @@ const Page: React.FC = () => {
 
             <div className="flex items-center gap-1 z-10">
               <div
-                className={`flex items-center justify-center w-8 h-8 rounded-full ${currentStep >= 3
+                className={`flex items-center justify-center w-8 h-8 rounded-full ${
+                  currentStep >= 3
                     ? "bg-primary text-primary-foreground"
                     : "bg-background text-muted-foreground border"
-                  } font-medium shadow-sm`}
+                } font-medium shadow-sm`}
               >
                 3
               </div>

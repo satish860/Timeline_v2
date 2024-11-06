@@ -149,6 +149,8 @@ const tables = [
       { name: "user_id", type: "text" },
       { name: "CaseName", type: "text" },
       { name: "Status", type: "text" },
+      { name: "user_mail", type: "text" },
+      { name: "user_name", type: "text" },
     ],
     revLinks: [{ column: "workspace", table: "timeline_files_data" }],
   },

@@ -9,6 +9,8 @@ export async function POST(req: NextRequest) {
     const request = await req.json();
     const name = request.caseName;
     const user_id = request.user_id;
+    const user_name = request.user_name;
+    const user_email = request.user_email;
 
     if (!request.caseName) {
       return NextResponse.json(
@@ -21,6 +23,8 @@ export async function POST(req: NextRequest) {
       CaseName: name,
       user_id: user_id,
       Status: "Pending",
+      user_name: user_name,
+      user_mail: user_email,
     });
 
     return NextResponse.json({ recId: record.id }, { status: 201 });
