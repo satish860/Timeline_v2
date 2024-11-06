@@ -10,40 +10,38 @@ interface FeaturesProps {
 
 const featureList: FeaturesProps[] = [
   {
-    icon: "TabletSmartphone",
-    title: "Mobile Friendly",
+    icon: "ShieldCheck",
+    title: "Trusted Security",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam, consectetur.",
+      "SOC 2, ISO 27001, and GDPR compliant on Google Cloud for secure data storage.",
   },
   {
     icon: "BadgeCheck",
-    title: "Social Proof",
+    title: "Intelligent AI Review Loop",
     description:
-      "Lorem ipsum dolor sit amet consectetur. Natus consectetur, odio ea accusamus aperiam.",
+      "Automatic AI review to detect and reduce hallucinations, ensuring reliable insights.",
   },
   {
     icon: "Goal",
-    title: "Targeted Content",
+    title: "AI Insights, Human Verifiable",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. odio ea accusamus aperiam.",
+      "AI-driven insights backed by source documents for complete transparency.",
   },
   {
-    icon: "PictureInPicture",
-    title: "Strong Visuals",
-    description:
-      "Lorem elit. A odio velit cum aliquam. Natus consectetur dolores, odio ea accusamus aperiam.",
+    icon: "FileText",
+    title: "Handles Scanned & Handwritten Files",
+    description: "Effortlessly process both scanned and handwritten documents.",
   },
   {
     icon: "MousePointerClick",
-    title: "Clear CTA",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing. odio ea accusamus consectetur.",
+    title: "Made in India, Built for the World",
+    description: "Indian innovation tailored for global legal professionals.",
   },
   {
     icon: "Newspaper",
-    title: "Clear Headline",
+    title: "Clear, Connected Timelines",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam. Natus consectetur.",
+      "Structured timelines reveal critical case connections and insights.",
   },
 ];
 
@@ -55,13 +53,13 @@ export const FeaturesSection = () => {
       </h2>
 
       <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
-        What Makes Us Different
+        Never Let Your Team Manually Prepare a Timeline Again
       </h2>
 
       <h3 className="md:w-1/2 mx-auto text-xl text-center text-muted-foreground mb-8">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem
-        fugiat, odit similique quasi sint reiciendis quidem iure veritatis optio
-        facere tenetur.
+        Our platform automates the creation of Lists of Dates, reducing drafting
+        time by up to 90% so your team can focus on high-impact case
+        preparation.
       </h3>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
