@@ -14,10 +14,10 @@ export default function LandingPage() {
       <Navbar />
       <HeroSection />
       <FeaturesSection />
-      <TestimonialSection />
-      <TeamSection />
+      {/* <TestimonialSection /> */}
+      {/* <TeamSection />
       <PricingSection />
-      <ContactSection />
+      <ContactSection /> */}
       <FAQSection />
       <FooterSection />
     </>
