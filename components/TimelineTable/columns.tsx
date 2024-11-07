@@ -5,6 +5,9 @@ import { z } from "zod";
 import { DataTableColumnHeader } from "@/components/Table/data-table-column-header";
 import { Checkbox } from "../ui/checkbox";
 import { Button } from "../ui/button";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "../ui/dropdown-menu"
+import { EllipsisVertical, Trash } from "lucide-react"
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog"
 
 export const TimelineEventSchema = z.object({
   original_dates: z.array(z.string()),
@@ -96,6 +99,65 @@ export const columns: ColumnDef<TimelineEvent>[] = [
           </div>
         </div>
       ));
+    },
+  },
+  {
+    id: "actions",
+    cell: ({ row }) => {
+      const handleDelete = () => {
+        window.dispatchEvent(
+          new CustomEvent("deleteTimelineEvent", {
+            detail: {
+              rowId: row.id,
+              event: row.original,
+            },
+          })
+        )
+        console.log("test delete",row)
+      }
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="h-8 w-8 p-0">
+              <span className="sr-only">Open menu</span>
+              <EllipsisVertical className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <DropdownMenuItem
+                  onSelect={(e) => {
+                    e.preventDefault();
+                  }}
+                  className="text-destructive focus:text-destructive"
+                >
+                  <Trash className="mr-2 h-4 w-4" />
+                  Delete
+                </DropdownMenuItem>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This action cannot be undone. This will permanently delete the timeline event.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction onClick={(e) => {
+                      handleDelete();
+                    }} 
+                    className="bg-destructive hover:bg-destructive/90"
+                  >
+                    Confirm
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )
     },
   },
 ];
